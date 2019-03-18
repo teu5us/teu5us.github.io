@@ -27,6 +27,8 @@ drawer
 
   ~ *трассант*
 
+------
+
 drawee
   ~ also drawee bank BANKING the bank that pays the amount of money that is written on a cheque or bank draft by the owner of an account at that bank
 
