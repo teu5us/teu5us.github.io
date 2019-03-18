@@ -3,6 +3,9 @@ layout: default
 ---
 
 <header class="post-header">
+	<div>
+		<span>Posted on </span><span class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</span>
+	</div>
 
 	<h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
 </header>
@@ -17,7 +20,7 @@ layout: default
 	<div class="next">
 		{% if page.next.url %}
 		<a href="{{ site.baseurl }}{{ page.next.url }}">
-			<span>Далее</span>
+			<span>Next entry</span>
 			{{ page.next.title }}
 		</a>
 		{% endif %}
@@ -26,7 +29,7 @@ layout: default
 	<div class="previous">
 		{% if page.previous.url %}
 		<a href="{{ site.baseurl }}{{ page.previous.url }}">
-			<span>Назад</span>
+			<span>Previous entry</span>
 			{{ page.previous.title }}
 		</a>
 		{% endif %}
