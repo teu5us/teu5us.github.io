@@ -2,7 +2,7 @@
 title: Bank Terms
 ---
 
-[Go back](../index.html)
+[Go back](https://teu5us.github.io)
 
 ------
 
@@ -149,4 +149,4 @@ US ATM; UK Cash dispenser, Cash machine
 
 ------
 
-[Go back](../index.html)
+[Go back](https://teu5us.github.io)

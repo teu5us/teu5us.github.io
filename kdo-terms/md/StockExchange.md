@@ -2,7 +2,7 @@
 title: Stock Exchange Terms
 ---
 
-[Go back](../index.html)
+[Go back](https://teu5us.github.io)
 
 ------
 
@@ -193,4 +193,4 @@ share issue
 
 ------
 
-[Go back](../index.html)
+[Go back](https://teu5us.github.io)

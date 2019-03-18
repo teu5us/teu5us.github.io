@@ -2,7 +2,7 @@
 title: International Banking Terms
 ---
 
-[Go back](../index.html)
+[Go back](https://teu5us.github.io)
 
 ------
 
@@ -145,4 +145,4 @@ payment for collection
 
 -------
 
-[Go back](../index.html)
+[Go back](https://teu5us.github.io)
