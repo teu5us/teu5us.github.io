@@ -1,5 +1,6 @@
 ---
-title: Bank Terms
+layout: post
+title: "Bank Terms"
 ---
 
 [Go back](https://teu5us.github.io)

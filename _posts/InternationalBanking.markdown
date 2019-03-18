@@ -1,5 +1,6 @@
 ---
-title: International Banking Terms
+layout: post
+title: "International Banking Terms"
 ---
 
 [Go back](https://teu5us.github.io)

@@ -1,5 +1,6 @@
 ---
-title: Stock Exchange Terms
+layout: post
+title: "Stock Exchange Terms"
 ---
 
 [Go back](https://teu5us.github.io)
