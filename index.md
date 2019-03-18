@@ -4,8 +4,8 @@ title: Добро пожаловать!
 
 # Коммуникация в сфере деловых отношений
 
-#. [Bank Terms](./kdo-terms/terms/Bank.html)
+1. [Bank Terms](./kdo-terms/terms/Bank.html)
 
-#. [International Banking Terms](./kdo-terms/terms/InternationalBanking.html)
+2. [International Banking Terms](./kdo-terms/terms/InternationalBanking.html)
 
-#. [Stock Exchange Terms](./kdo-terms/terms/StockExchange.html)
+3. [Stock Exchange Terms](./kdo-terms/terms/StockExchange.html)
