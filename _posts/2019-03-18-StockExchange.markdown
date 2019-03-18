@@ -3,7 +3,7 @@ layout: post
 title: "Stock Exchange Terms"
 ---
 
-[Go back](https://teu5us.github.io)
+[Go back](https://teu5us.github.io/table-of-contents)
 
 ------
 
@@ -255,4 +255,4 @@ share issue
 
 ------
 
-[Go back](https://teu5us.github.io)
+[Go back](https://teu5us.github.io/table-of-contents)

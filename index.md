@@ -2,14 +2,8 @@
 title: Добро пожаловать!
 ---
 
-# Коммуникация в сфере деловых отношений
+Тут я буду публиковать различные учебные материалы.
 
-1. [Bank Terms](./kdo-terms/terms/Bank.html)
-
-    * [Bank Terms]({{ site.url }}/{{ site. }})
-
-2. [International Banking Terms](./kdo-terms/terms/InternationalBanking.html)
-
-3. [Stock Exchange Terms](./kdo-terms/terms/StockExchange.html)
+<h2><a href="{{ site.baseurl }}/table-of-contents">Содержание</a></h2>
 
 # [Presentation template](./rptpres/index.html)

@@ -9,6 +9,8 @@ layout: default
 	<ul class="post-list">
 		{% for post in site.posts %}
 		<li>
+			<span class="post-meta" style="font-style: italic;">• {{ post.date | date: "%B %-d, %Y" }} •</span>
+
 			<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h3>
 		</li>
 		{% endfor %}
