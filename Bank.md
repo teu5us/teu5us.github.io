@@ -4,7 +4,7 @@ title: "Bank Terms"
 permalink: /bank/
 ---
 
-[Go back](https://teu5us.github.io/table-of-contents)
+[Go back](https://teu5us.github.io/)
 
 ------
 
@@ -170,4 +170,4 @@ US ATM; UK Cash dispenser, Cash machine
 
 ------
 
-[Go back](https://teu5us.github.io/table-of-contents)
+[Go back](https://teu5us.github.io/)

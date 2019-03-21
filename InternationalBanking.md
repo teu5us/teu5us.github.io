@@ -4,7 +4,7 @@ title: "International Banking Terms"
 permalink: /intbank/
 ---
 
-[Go back](https://teu5us.github.io/table-of-contents)
+[Go back](https://teu5us.github.io/)
 
 ------
 
@@ -168,4 +168,4 @@ payment for collection
 
 -------
 
-[Go back](https://teu5us.github.io/table-of-contents)
+[Go back](https://teu5us.github.io/)
