@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: default
 title: "Bank Terms"
+permalink: /bank/
 ---
 
 [Go back](https://teu5us.github.io/table-of-contents)

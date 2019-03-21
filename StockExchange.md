@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: default
 title: "Stock Exchange Terms"
+permalink: /seterms/
 ---
 
 [Go back](https://teu5us.github.io/table-of-contents)
