@@ -4,7 +4,7 @@ title: "Stock Exchange Terms"
 permalink: /seterms/
 ---
 
-[Go back](https://teu5us.github.io/)
+[Go back](https://teu5us.github.io/kdo)
 
 ------
 
@@ -256,4 +256,4 @@ share issue
 
 ------
 
-[Go back](https://teu5us.github.io/)
+[Go back](https://teu5us.github.io/kdo)

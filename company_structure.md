@@ -4,7 +4,7 @@ layout: default
 permalink: /company_structure/
 ---
 
-[Go back](https://teu5us.github.io/)
+[Go back](https://teu5us.github.io/kdo)
 
 **Shareholder** / Investor, shareowner
 
@@ -214,4 +214,4 @@ permalink: /company_structure/
 * A matrix type of organisational structure combines the traditional departments seen in functional structures with project teams. In a matrix structure, individuals work across teams and projects as well as within their own department or function.
 * *Матричная структура*
 
-[Go back](https://teu5us.github.io/)
+[Go back](https://teu5us.github.io/kdo)
