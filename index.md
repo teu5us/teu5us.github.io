@@ -11,4 +11,4 @@ title: Добро пожаловать!
 5. [Шаблон титульного листа ВКР -- "Перевод и переводоведение"](http://www.omsu.ru/about/structure/study/fl/stud_bakalavr/gia_ge_vkr/titul_vkr_pp.doc)
 6. [Образец заполненного титульного листа](http://www.omsu.ru/about/structure/study/fl/stud_bakalavr/gia_ge_vkr/obrazec_sapolnen_titul_vkr.doc)
 
-# <a href="{{ site.baseurl }}/kdo/>КДО -- Термины</a>
+# <a href="{{ site.baseurl }}/kdo/">КДО -- Термины</a>
