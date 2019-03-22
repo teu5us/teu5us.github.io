@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo rpts.md | entr -r pandoc -t revealjs -s -o rpts.html
+slide-level 2
