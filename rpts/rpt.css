@@ -302,12 +302,18 @@ mark.purple {
     /*border-radius: 15px!important;*/
     /*border-top-left-radius: 15px;*/
     /*border-top-right-radius: 15px;*/
-    box-shadow: -3px -3px 5px 5px #888;
-    -webkit-box-shadow: -3px -3px 5px 5px #888;
-    -moz-box-shadow: -3px -3px 5px 5px #888;
+    /* box-shadow: -3px -3px 5px 5px #888; */
+    /* -webkit-box-shadow: -3px -3px 5px 5px #888; */
+    /* -moz-box-shadow: -3px -3px 5px 5px #888; */
 }
 .reveal tfoot {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
+/* .reveal img { */
+/*     border: 5px solid orange; */
+/*     box-shadow: -3px -3px 5px 5px #888; */
+/*     -webkit-box-shadow: -3px -3px 5px 5px #888; */
+/*     -moz-box-shadow: -3px -3px 5px 5px #888; */
+/* } */
 </style>
