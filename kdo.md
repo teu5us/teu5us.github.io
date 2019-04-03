@@ -13,3 +13,5 @@ permalink: /kdo/
 # <a href="{{ site.baseurl }}/seterms/">Stock Exchange</a> #
 
 # <a href="{{ site.baseurl }}/recruitment/">Recruitment</a> #
+
+# <a href="{{ site.baseurl }}/retailing/">Retailing</a> #
