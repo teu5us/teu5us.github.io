@@ -17,3 +17,5 @@ permalink: /kdo/
 # <a href="{{ site.baseurl }}/retailing/">Retailing</a> #
 
 # <a href="{{ site.baseurl }}/inttrade/">International Trade</a> #
+
+# <a href="{{ site.baseurl }}/insurance/">Insurance</a> #
