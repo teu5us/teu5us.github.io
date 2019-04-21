@@ -88,8 +88,8 @@ payroll
 ------
 
 lease premium
- * премиальная надбавка в договорах аренды
- * *Money provided by the lease holder on a regular basis to the owner of the property for a specific period of time in exchange for use, such as an apartment or car.*
+ * залог
+ * *A premium is a capital sum paid to the landlord on the granting of a lease*
 
 ------
 
