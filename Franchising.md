@@ -1,6 +1,6 @@
 ---
 title: Franchising Terms
-layout: dafault
+layout: default
 permalink: /franchising/
 ---
 
