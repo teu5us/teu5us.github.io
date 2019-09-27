@@ -16,3 +16,5 @@ title: Добро пожаловать!
 # <a href="{{ site.baseurl }}/pandoc/">Pandoc + Markdown</a>
 
 # <a href="{{ site.baseurl }}/tp.pdf">Теория перевода</a>
+
+# <a href="{{ site.baseurl }}/meto.html">Методичка по методике</a>
