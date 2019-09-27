@@ -19,7 +19,8 @@ description: > # this means to ignore newlines until "baseurl:"
 #baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://teu5us.github.io" # the base hostname & protocol for your site
 github_username:    teu5us
-theme: "jekyll-theme-libretto"
+# theme: "jekyll-theme-libretto"
+theme: "jekyll-theme-modernist"
 
 # Build settings
 markdown: kramdown
