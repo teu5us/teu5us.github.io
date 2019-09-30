@@ -18,3 +18,5 @@ title: Добро пожаловать!
 <!-- # <a href="{{ site.baseurl }}/tp.pdf">Теория перевода</a> -->
 
 # <a href="{{ site.baseurl }}/meto.html">Методичка по методике</a>
+
+# <a href="{{ site.baseurl }}/Lectures.html">Лекции по методике</a>
