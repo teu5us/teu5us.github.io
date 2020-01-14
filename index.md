@@ -22,3 +22,5 @@ title: Добро пожаловать!
 # <a href="{{ site.baseurl }}/Lectures.html">Лекции по методике</a>
 
 # <a href="{{ site.baseurl }}/IMN.html">Лекции по истории и методологии науки</a>
+
+# <a href="{{ site.baseurl }}/zalog_mat/">Залоговое. Материал</a>
