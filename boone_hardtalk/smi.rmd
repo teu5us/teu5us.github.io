@@ -1,20 +1,21 @@
 ---
 title: HARDtalk Presentation
-author: Velvet Cat, Zußüs, SengnorePomidorchik
+author: Anastasia Shevchenko, Sergey Esev, Pavel Stepanov
 output:
  ioslides_presentation:
   widescreen: true
   transition: faster
+  logo: ./hardtalk.jpg
 ---
 
 # Coronavirus | Laurence Boone, OECD, on the global response to COVID-19
 
-# Who Talks
+# Who Talks | *HARDtalk*
 
 ## Stephen Sackur
 
 <div class="columns-2">
-![](./sackur.jpg){width=350px}
+![](./sackur.jpg){width=400px}
 
 Stephen Sackur is an English journalist who presents HARDtalk, a current
 affairs interview programme on BBC World News and the BBC News Channel. For
@@ -30,7 +31,7 @@ Laurence Boone is a French economist whose fields of interest include
 macroeconomics, European politics and public finance.
 </div>
 
-# The Interview
+# The Interview | *HARDtalk*
 
 ## Characteristics of the interview
 
