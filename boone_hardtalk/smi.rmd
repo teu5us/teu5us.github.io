@@ -1,7 +1,10 @@
 ---
 title: HardTalk Presentation
 author: Velvet Cat, Zußüs, SengnorePomidorchik
-output: ioslides_presentation
+output:
+ ioslides_presentation:
+  widescreen: true
+  transition: faster
 ---
 
 # Intro slide with topic name
