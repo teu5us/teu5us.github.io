@@ -9,11 +9,11 @@ output:
 
 # Coronavirus | Laurence Boone, OECD, on the global response to COVID-19
 
-# Who talks
+# Who Talks
 
 <!-- add photos -->
 
-## Stephen Sakur
+## Stephen Sackur
 
 <div class="columns-2">
 ![](./sackur.jpg){width=350px}
@@ -32,7 +32,15 @@ Laurence Boone is a French economist whose fields of interest include
 macroeconomics, European politics and public finance.
 </div>
 
-# Issues discussed section
+# The Interview
+
+## Characteristics of the interview
+
+- Sackur constantly interrupts his guest
+- Puts his opinion first
+- Calls Boone a born-optimist (implying that she's wrong)
+
+## Issues discussed
 
 ## ...
 
