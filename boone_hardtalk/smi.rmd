@@ -12,7 +12,7 @@ output:
 
 # Who Talks | *HARDtalk*
 
-## Stephen Sackur
+## Stephen Sackur { .flexbox .vcenter }
 
 <div class="columns-2">
 ![](./sackur.jpg){width=400px}
@@ -22,7 +22,7 @@ affairs interview programme on BBC World News and the BBC News Channel. For
 fifteen years he was a BBC foreign correspondent.
 </div>
 
-## Laurence Boone
+## Laurence Boone { .flexbox .vcenter }
 
 <div class="columns-2">
 ![](./boone.jpg){width=400px}
@@ -33,13 +33,13 @@ macroeconomics, European politics and public finance.
 
 # The Interview | *HARDtalk*
 
-## Characteristics of the interview
+## Characteristics of the interview { .flexbox .vcenter }
 
 - Sackur constantly interrupts his guest
 - Puts his opinion first
 - Calls Boone a born-optimist implying that she's wrong
 
-## Issues discussed
+## Issues discussed { .flexbox .vcenter }
 
 1. Are actions matching the words when it comes to trying to safeguard the
    world economy?
