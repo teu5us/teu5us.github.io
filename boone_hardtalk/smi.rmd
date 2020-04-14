@@ -1,0 +1,19 @@
+---
+title: HardTalk Presentation
+author: Velvet Cat, Zußüs, SengnorePomidorchik
+output: ioslides_presentation
+---
+
+# Intro slide with topic name
+
+# People section
+
+## Sakur
+
+## Boone
+
+# Issues discussed section
+
+## ...
+
+## ...
