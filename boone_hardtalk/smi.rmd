@@ -7,13 +7,19 @@ output:
   transition: faster
 ---
 
-# Intro slide with topic name
+# Coronavirus | Laurence Boone, OECD, on the global response to Covid-19
 
-# People section
+# Who talks
+
+<!-- add photos -->
 
 ## Sakur
 
+Stephen Sackur is an English journalist who presents HARDtalk, a current affairs interview programme on BBC World News and the BBC News Channel. For fifteen years he was a BBC foreign correspondent.
+
 ## Boone
+
+Laurence Boone is a French economist whose fields of interest include macroeconomics, European politics and public finance.
 
 # Issues discussed section
 
