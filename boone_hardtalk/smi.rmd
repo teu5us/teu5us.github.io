@@ -1,5 +1,5 @@
 ---
-title: HardTalk Presentation
+title: HARDtalk Presentation
 author: Velvet Cat, Zußüs, SengnorePomidorchik
 output:
  ioslides_presentation:
@@ -10,8 +10,6 @@ output:
 # Coronavirus | Laurence Boone, OECD, on the global response to COVID-19
 
 # Who Talks
-
-<!-- add photos -->
 
 ## Stephen Sackur
 
@@ -42,6 +40,8 @@ macroeconomics, European politics and public finance.
 
 ## Issues discussed
 
-## ...
-
-## ...
+- ?
+- ?
+- panic on financial markets
+- exaggeration of amount of damage to corporate life
+- biggest problems going forward
