@@ -21,7 +21,7 @@ description: > # this means to ignore newlines until "baseurl:"
 url: "https://teu5us.github.io" # the base hostname & protocol for your site
 github_username:    teu5us
 # theme: "jekyll-theme-libretto"
-theme: "jekyll-theme-modernist"
+theme: jekyll-theme-minimal
 
 # Build settings
 markdown: kramdown
