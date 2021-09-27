@@ -10,3 +10,4 @@ This is just a personal page.
    An example can be found [here](./nix-lib.html).
 
 3. [Easystroke for Nix](https://github.com/teu5us/easystroke-nix)
+4. [NeoVim (>=0.5.0) Configuration](https://github.com/teu5us/nvimconf)
