@@ -77,6 +77,7 @@
   <li><a href="#builtins.functionargs">builtins.functionArgs</a></li>
   <li><a href="#builtins.fromjson">builtins.fromJSON</a></li>
   <li><a href="#builtins.foldl">builtins.foldl‚Äô</a></li>
+  <li><a href="#builtins.floor">builtins.floor</a></li>
   <li><a href="#builtins.filtersource">builtins.filterSource</a></li>
   <li><a href="#builtins.filter">builtins.filter</a></li>
   <li><a href="#builtins.fetchurl">builtins.fetchurl</a></li>
@@ -91,6 +92,7 @@
   <li><a href="#builtins.concatmap">builtins.concatMap</a></li>
   <li><a href="#builtins.concatlists">builtins.concatLists</a></li>
   <li><a href="#builtins.compareversions">builtins.compareVersions</a></li>
+  <li><a href="#builtins.ceil">builtins.ceil</a></li>
   <li><a href="#builtins.catattrs">builtins.catAttrs</a></li>
   <li><a href="#builtins.bitxor">builtins.bitXor</a></li>
   <li><a href="#builtins.bitor">builtins.bitOr</a></li>
@@ -141,6 +143,17 @@
   <li><a href="#lib.attrsets.recurseintoattrs">lib.attrsets.recurseIntoAttrs</a></li>
   <li><a href="#lib.attrsets.cartesianproductofsets">lib.attrsets.cartesianProductOfSets</a></li>
   </ul></li>
+  <li><a href="#customisation-functions">Customisation functions</a>
+  <ul>
+  <li><a href="#lib.customisation.overridederivation">lib.customisation.overrideDerivation</a></li>
+  <li><a href="#lib.customisation.makeoverridable">lib.customisation.makeOverridable</a></li>
+  <li><a href="#lib.customisation.callpackagewith">lib.customisation.callPackageWith</a></li>
+  <li><a href="#lib.customisation.callpackageswith">lib.customisation.callPackagesWith</a></li>
+  <li><a href="#lib.customisation.extendderivation">lib.customisation.extendDerivation</a></li>
+  <li><a href="#lib.customisation.hydrajob">lib.customisation.hydraJob</a></li>
+  <li><a href="#lib.customisation.makescope">lib.customisation.makeScope</a></li>
+  <li><a href="#lib.customisation.makescopewithsplicing">lib.customisation.makeScopeWithSplicing</a></li>
+  </ul></li>
   <li><a href="#debugging-functions">Debugging functions</a>
   <ul>
   <li><a href="#lib.debug.traceif">lib.debug.traceIf</a></li>
@@ -155,6 +168,18 @@
   <li><a href="#lib.debug.tracefnseqn">lib.debug.traceFnSeqN</a></li>
   <li><a href="#lib.debug.runtests">lib.debug.runTests</a></li>
   <li><a href="#lib.debug.testalltrue">lib.debug.testAllTrue</a></li>
+  </ul></li>
+  <li><a href="#generator-functions">Generator functions</a>
+  <ul>
+  <li><a href="#lib.generators.mkvaluestringdefault">lib.generators.mkValueStringDefault</a></li>
+  <li><a href="#lib.generators.mkkeyvaluedefault">lib.generators.mkKeyValueDefault</a></li>
+  <li><a href="#lib.generators.tokeyvalue">lib.generators.toKeyValue</a></li>
+  <li><a href="#lib.generators.toini">lib.generators.toINI</a></li>
+  <li><a href="#lib.generators.togitini">lib.generators.toGitINI</a></li>
+  <li><a href="#lib.generators.tojson">lib.generators.toJSON</a></li>
+  <li><a href="#lib.generators.toyaml">lib.generators.toYAML</a></li>
+  <li><a href="#lib.generators.topretty">lib.generators.toPretty</a></li>
+  <li><a href="#lib.generators.todhall">lib.generators.toDhall</a></li>
   </ul></li>
   <li><a href="#list-manipulation-functions">List manipulation functions</a>
   <ul>
@@ -199,7 +224,50 @@
   <li><a href="#lib.lists.subtractlists">lib.lists.subtractLists</a></li>
   <li><a href="#lib.lists.mutuallyexclusive">lib.lists.mutuallyExclusive</a></li>
   </ul></li>
-  <li><a href="#nixos-nixpkgs-option-handling">NixOS / nixpkgs option handling</a>
+  <li><a href="#meta-functions">Meta functions</a>
+  <ul>
+  <li><a href="#lib.meta.addmetaattrs">lib.meta.addMetaAttrs</a></li>
+  <li><a href="#lib.meta.dontdistribute">lib.meta.dontDistribute</a></li>
+  <li><a href="#lib.meta.setname">lib.meta.setName</a></li>
+  <li><a href="#lib.meta.updatename">lib.meta.updateName</a></li>
+  <li><a href="#lib.meta.appendtoname">lib.meta.appendToName</a></li>
+  <li><a href="#lib.meta.mapderivationattrset">lib.meta.mapDerivationAttrset</a></li>
+  <li><a href="#lib.meta.setprio">lib.meta.setPrio</a></li>
+  <li><a href="#lib.meta.lowprio">lib.meta.lowPrio</a></li>
+  <li><a href="#lib.meta.lowprioset">lib.meta.lowPrioSet</a></li>
+  <li><a href="#lib.meta.hiprio">lib.meta.hiPrio</a></li>
+  <li><a href="#lib.meta.hiprioset">lib.meta.hiPrioSet</a></li>
+  <li><a href="#lib.meta.platformmatch">lib.meta.platformMatch</a></li>
+  <li><a href="#lib.meta.availableon">lib.meta.availableOn</a></li>
+  <li><a href="#lib.meta.getlicensefromspdxid">lib.meta.getLicenseFromSpdxId</a></li>
+  </ul></li>
+  <li><a href="#modules-functions">Modules functions</a>
+  <ul>
+  <li><a href="#lib.modules.evalmodules">lib.modules.evalModules</a></li>
+  <li><a href="#lib.modules.collectstructuredmodules">lib.modules.collectStructuredModules</a></li>
+  <li><a href="#lib.modules.unifymodulesyntax">lib.modules.unifyModuleSyntax</a></li>
+  <li><a href="#lib.modules.mergemodules">lib.modules.mergeModules</a></li>
+  <li><a href="#lib.modules.byname">lib.modules.byName</a></li>
+  <li><a href="#lib.modules.options">lib.modules.options‚Äô</a></li>
+  <li><a href="#lib.modules.mergeoptiondecls">lib.modules.mergeOptionDecls</a></li>
+  <li><a href="#lib.modules.evaloptionvalue">lib.modules.evalOptionValue</a></li>
+  <li><a href="#lib.modules.pushdownproperties">lib.modules.pushDownProperties</a></li>
+  <li><a href="#lib.modules.dischargeproperties">lib.modules.dischargeProperties</a></li>
+  <li><a href="#lib.modules.filteroverrides">lib.modules.filterOverrides</a></li>
+  <li><a href="#lib.modules.sortproperties">lib.modules.sortProperties</a></li>
+  <li><a href="#lib.modules.fixupoptiontype">lib.modules.fixupOptionType</a></li>
+  <li><a href="#lib.modules.mkif">lib.modules.mkIf</a></li>
+  <li><a href="#lib.modules.fixmergemodules">lib.modules.fixMergeModules</a></li>
+  <li><a href="#lib.modules.mkremovedoptionmodule">lib.modules.mkRemovedOptionModule</a></li>
+  <li><a href="#lib.modules.mkrenamedoptionmodule">lib.modules.mkRenamedOptionModule</a></li>
+  <li><a href="#lib.modules.mkmergedoptionmodule">lib.modules.mkMergedOptionModule</a></li>
+  <li><a href="#lib.modules.mkchangedoptionmodule">lib.modules.mkChangedOptionModule</a></li>
+  <li><a href="#lib.modules.mkaliasoptionmodule">lib.modules.mkAliasOptionModule</a></li>
+  <li><a href="#lib.modules.mkderivedconfig">lib.modules.mkDerivedConfig</a></li>
+  <li><a href="#lib.modules.importjson">lib.modules.importJSON</a></li>
+  <li><a href="#lib.modules.importtoml">lib.modules.importTOML</a></li>
+  </ul></li>
+  <li><a href="#options-functions">Options functions</a>
   <ul>
   <li><a href="#lib.options.isoption">lib.options.isOption</a></li>
   <li><a href="#lib.options.mkoption">lib.options.mkOption</a></li>
@@ -209,8 +277,14 @@
   <li><a href="#lib.options.getvalues">lib.options.getValues</a></li>
   <li><a href="#lib.options.getfiles">lib.options.getFiles</a></li>
   <li><a href="#lib.options.scruboptionvalue">lib.options.scrubOptionValue</a></li>
-  <li><a href="#lib.options.literalexample">lib.options.literalExample</a></li>
+  <li><a href="#lib.options.literalexpression">lib.options.literalExpression</a></li>
+  <li><a href="#lib.options.literaldocbook">lib.options.literalDocBook</a></li>
   <li><a href="#lib.options.showoption">lib.options.showOption</a></li>
+  </ul></li>
+  <li><a href="#sources-functions">Sources functions</a>
+  <ul>
+  <li><a href="#lib.sources.trace">lib.sources.trace</a></li>
+  <li><a href="#lib.sources.sourcefilesbysuffices">lib.sources.sourceFilesBySuffices</a></li>
   </ul></li>
   <li><a href="#string-manipulation-functions">String manipulation functions</a>
   <ul>
@@ -237,6 +311,7 @@
   <li><a href="#lib.strings.escapenixstring">lib.strings.escapeNixString</a></li>
   <li><a href="#lib.strings.escaperegex">lib.strings.escapeRegex</a></li>
   <li><a href="#lib.strings.escapenixidentifier">lib.strings.escapeNixIdentifier</a></li>
+  <li><a href="#lib.strings.escapexml">lib.strings.escapeXML</a></li>
   <li><a href="#lib.strings.tolower">lib.strings.toLower</a></li>
   <li><a href="#lib.strings.toupper">lib.strings.toUpper</a></li>
   <li><a href="#lib.strings.addcontextfrom">lib.strings.addContextFrom</a></li>
@@ -291,11 +366,21 @@
   <li><a href="#lib.trivial.splitbyandcompare">lib.trivial.splitByAndCompare</a></li>
   <li><a href="#lib.trivial.importjson">lib.trivial.importJSON</a></li>
   <li><a href="#lib.trivial.importtoml">lib.trivial.importTOML</a></li>
+  <li><a href="#lib.trivial.warn">lib.trivial.warn</a></li>
+  <li><a href="#lib.trivial.warnif">lib.trivial.warnIf</a></li>
   <li><a href="#lib.trivial.setfunctionargs">lib.trivial.setFunctionArgs</a></li>
   <li><a href="#lib.trivial.functionargs">lib.trivial.functionArgs</a></li>
   <li><a href="#lib.trivial.isfunction">lib.trivial.isFunction</a></li>
   <li><a href="#lib.trivial.tohexstring">lib.trivial.toHexString</a></li>
   <li><a href="#lib.trivial.tobasedigits">lib.trivial.toBaseDigits</a></li>
+  </ul></li>
+  <li><a href="#versions-functions">Versions functions</a>
+  <ul>
+  <li><a href="#lib.versions.splitversion">lib.versions.splitVersion</a></li>
+  <li><a href="#lib.versions.major">lib.versions.major</a></li>
+  <li><a href="#lib.versions.minor">lib.versions.minor</a></li>
+  <li><a href="#lib.versions.patch">lib.versions.patch</a></li>
+  <li><a href="#lib.versions.majorminor">lib.versions.majorMinor</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -379,7 +464,7 @@
 <ul>
 <li><p>A string (in which case the string is returned unmodified).</p></li>
 <li><p>A path (e.g., <code>toString /foo/bar</code> yields <code>&quot;/foo/bar&quot;</code>.</p></li>
-<li><p>A set containing <code>{ __toString = self: ...; }</code>.</p></li>
+<li><p>A set containing <code>{ __toString = self: ...; }</code> or <code>{ outPath = ...; }</code>.</p></li>
 <li><p>An integer.</p></li>
 <li><p>A list, in which case the string representations of its elements are joined with spaces.</p></li>
 <li><p>A Boolean (<code>false</code> yields <code>&quot;&quot;</code>, <code>true</code> yields <code>&quot;1&quot;</code>).</p></li>
@@ -663,8 +748,16 @@ When provided, this is the expected hash of the file at the path. Evaluation wil
 <h2 id="builtins.foldl">builtins.foldl‚Äô</h2>
 <p><em>op, nul, list</em></p>
 <p>Reduce a list by applying a binary operator, from left to right, e.g.¬†<code>foldl‚Äô op nul [x0 x1 x2 ...] = op (op (op nul x0) x1) x2) ...</code>. The operator is applied strictly, i.e., its arguments are evaluated first. For example, <code>foldl‚Äô (x: y: x + y) 0 [1 2 3]</code> evaluates to 6.</p>
+<h2 id="builtins.floor">builtins.floor</h2>
+<p><em>double</em></p>
+<p>Converts an IEEE-754 double-precision floating-point number (<em>double</em>) to the next lower integer.</p>
+<p>If the datatype is neither an integer nor a ‚Äúfloat‚Äù, an evaluation error will be thrown.</p>
 <h2 id="builtins.filtersource">builtins.filterSource</h2>
 <p><em>e1, e2</em></p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p><code>filterSource</code> should not be used to filter store paths. Since <code>filterSource</code> uses the name of the input directory while naming the output directory, doing so will produce a directory name in the form of <code>&lt;hash2&gt;-&lt;hash&gt;-&lt;name&gt;</code>, where <code>&lt;hash&gt;-&lt;name&gt;</code> is the name of the input directory. Since <code>&lt;hash&gt;</code> depends on the unfiltered directory, the name of the output directory will indirectly depend on files that are filtered out by the function. This will trigger a rebuild even when a filtered out file is changed. Use <code>builtins.path</code> instead, which allows specifying the name of the output directory.</p>
+</blockquote>
 <p>This function allows you to copy sources into the Nix store while filtering certain files. For instance, suppose that you want to use the directory <code>source-dir</code> as an input to a Nix expression, e.g.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stdenv.mkDerivation</span> {</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">...</span></span>
@@ -790,6 +883,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <h2 id="builtins.compareversions">builtins.compareVersions</h2>
 <p><em>s1, s2</em></p>
 <p>Compare two strings representing versions and return <code>-1</code> if version <em>s1</em> is older than version <em>s2</em>, <code>0</code> if they are the same, and <code>1</code> if <em>s1</em> is newer than <em>s2</em>. The version comparison algorithm is the same as the one used by <a href="../command-ref/nix-env.md#operation---upgrade"><code>nix-env -u</code></a>.</p>
+<h2 id="builtins.ceil">builtins.ceil</h2>
+<p><em>double</em></p>
+<p>Converts an IEEE-754 double-precision floating-point number (<em>double</em>) to the next higher integer.</p>
+<p>If the datatype is neither an integer nor a ‚Äúfloat‚Äù, an evaluation error will be thrown.</p>
 <h2 id="builtins.catattrs">builtins.catAttrs</h2>
 <p><em>attr, list</em></p>
 <p>Collect each attribute named <em>attr</em> from a list of attribute sets. Attrsets that don‚Äôt contain the named attribute are ignored. For example,</p>
@@ -909,7 +1006,7 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <h3 id="lib.attrsets.getattrfrompath">lib.attrsets.getAttrFromPath</h3>
 <p><em>attrPath, set</em></p>
 <p><code>getAttrFromPath :: [String] -&gt; AttrSet -&gt; Value</code></p>
-<p>Like <a href="#function-library-lib.attrsets.attrByPath"></a> except without a default, and it will throw if the value doesn‚Äôt exist.</p>
+<p>Like except without a default, and it will throw if the value doesn‚Äôt exist.</p>
 <ul>
 <li><p><code>attrPath</code></p>
 <p>A list of strings representing the path through the nested attribute set <var>set</var>.</p></li>
@@ -1107,7 +1204,7 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 </ul>
 <p>Modifying each value of an attribute set:</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lib.attrsets.mapAttrs</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">name:</span> value: name + <span class="st">&quot;-&quot;</span> value<span class="kw">)</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">name:</span> value: name + <span class="st">&quot;-&quot;</span> + value<span class="kw">)</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">{</span> <span class="ex">x</span> = <span class="st">&quot;foo&quot;</span><span class="kw">;</span> <span class="ex">y</span> = <span class="st">&quot;bar&quot;</span><span class="kw">;</span> <span class="kw">}</span></span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> { x = <span class="st">&quot;x-foo&quot;</span><span class="kw">;</span> <span class="ex">y</span> = <span class="st">&quot;y-bar&quot;</span><span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
 <h3 id="lib.attrsets.mapattrs-1">lib.attrsets.mapAttrs‚Äô</h3>
@@ -1356,7 +1453,7 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <h3 id="lib.attrsets.zipattrs">lib.attrsets.zipAttrs</h3>
 <p><em>sets</em></p>
 <p><code>zipAttrsWith :: [ AttrSet ] -&gt; AttrSet</code></p>
-<p>Merge sets of attributes and combine each attribute value in to a list. Similar to <a href="#function-library-lib.attrsets.zipAttrsWith"></a> where the merge function returns a list of all values.</p>
+<p>Merge sets of attributes and combine each attribute value in to a list. Similar to where the merge function returns a list of all values.</p>
 <ul>
 <li><p><code>sets</code></p>
 <p>A list of attribute sets to zip together.</p></li>
@@ -1468,6 +1565,91 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>     <span class="kw">{</span> <span class="ex">a</span> = 2<span class="kw">;</span> <span class="ex">b</span> = 10<span class="kw">;</span> <span class="kw">}</span></span>
 <span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>     <span class="kw">{</span> <span class="ex">a</span> = 2<span class="kw">;</span> <span class="ex">b</span> = 20<span class="kw">;</span> <span class="kw">}</span></span>
 <span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>   <span class="ex">]</span></span></code></pre></div>
+<h2 id="customisation-functions">Customisation functions</h2>
+<h3 id="lib.customisation.overridederivation">lib.customisation.overrideDerivation</h3>
+<p><em>drv, f</em></p>
+<p><code>overrideDerivation drv f&#39; takes a derivation (i.e., the result of a call to the builtin function</code>derivation‚Äô) and returns a new derivation in which the attributes of the original are overridden according to the function <code>f&#39;.  The function</code>f‚Äô is called with the original derivation attributes.</p>
+<ul>
+<li><p><code>drv</code></p>
+<p>Function argument</p></li>
+<li><p><code>f</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.customisation.makeoverridable">lib.customisation.makeOverridable</h3>
+<p><em>f, origArgs</em></p>
+<p><code>makeOverridable</code> takes a function from attribute set to attribute set and injects <code>override</code> attribute which can be used to override arguments of the function.</p>
+<ul>
+<li><p><code>f</code></p>
+<p>Function argument</p></li>
+<li><p><code>origArgs</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.customisation.callpackagewith">lib.customisation.callPackageWith</h3>
+<p><em>autoArgs, fn, args</em></p>
+<p>Call the package function in the file <code>fn&#39; with the required arguments automatically.  The function is called with the arguments</code>args‚Äô, but any missing arguments are obtained from `autoArgs‚Äô. This function is intended to be partially parameterised, e.g.,</p>
+<ul>
+<li><p><code>autoArgs</code></p>
+<p>Function argument</p></li>
+<li><p><code>fn</code></p>
+<p>Function argument</p></li>
+<li><p><code>args</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.customisation.callpackageswith">lib.customisation.callPackagesWith</h3>
+<p><em>autoArgs, fn, args</em></p>
+<p>Like callPackage, but for a function that returns an attribute set of derivations. The override function is added to the individual attributes.</p>
+<ul>
+<li><p><code>autoArgs</code></p>
+<p>Function argument</p></li>
+<li><p><code>fn</code></p>
+<p>Function argument</p></li>
+<li><p><code>args</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.customisation.extendderivation">lib.customisation.extendDerivation</h3>
+<p><em>condition, passthru, drv</em></p>
+<p>Add attributes to each output of a derivation without changing the derivation itself and check a given condition when evaluating.</p>
+<ul>
+<li><p><code>condition</code></p>
+<p>Function argument</p></li>
+<li><p><code>passthru</code></p>
+<p>Function argument</p></li>
+<li><p><code>drv</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.customisation.hydrajob">lib.customisation.hydraJob</h3>
+<p><em>drv</em></p>
+<p>Strip a derivation of all non-essential attributes, returning only those needed by hydra-eval-jobs. Also strictly evaluate the result to ensure that there are no thunks kept alive to prevent garbage collection.</p>
+<ul>
+<li><p><code>drv</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.customisation.makescope">lib.customisation.makeScope</h3>
+<p><em>newScope, f</em></p>
+<p>Make a set of packages with a common scope. All packages called with the provided <code>callPackage&#39; will be evaluated with the same arguments. Any package in the set may depend on any other. The</code>overrideScope‚Äô<code>function allows subsequent modification of the package set in a consistent way, i.e. all packages in the set will be called with the overridden packages. The package sets may be hierarchical: the packages in the set are called with the scope provided by</code>newScope‚Äô and the set provides a `newScope‚Äô attribute which can form the parent scope for later package sets.</p>
+<ul>
+<li><p><code>newScope</code></p>
+<p>Function argument</p></li>
+<li><p><code>f</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.customisation.makescopewithsplicing">lib.customisation.makeScopeWithSplicing</h3>
+<p><em>splicePackages, newScope, otherSplices, keep, extra, f</em></p>
+<p>Like the above, but aims to support cross compilation. It‚Äôs still ugly, but hopefully it helps a little bit.</p>
+<ul>
+<li><p><code>splicePackages</code></p>
+<p>Function argument</p></li>
+<li><p><code>newScope</code></p>
+<p>Function argument</p></li>
+<li><p><code>otherSplices</code></p>
+<p>Function argument</p></li>
+<li><p><code>keep</code></p>
+<p>Function argument</p></li>
+<li><p><code>extra</code></p>
+<p>Function argument</p></li>
+<li><p><code>f</code></p>
+<p>Function argument</p></li>
+</ul>
 <h2 id="debugging-functions">Debugging functions</h2>
 <h3 id="lib.debug.traceif">lib.debug.traceIf</h3>
 <p><em>pred, msg, x</em></p>
@@ -1598,6 +1780,102 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 </ul>
 <p>lib.debug.testAllTrue usage example:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span> <span class="ex">testX</span> = allTrue [ true ]<span class="kw">;</span> <span class="kw">}</span></span></code></pre></div>
+<h2 id="generator-functions">Generator functions</h2>
+<h3 id="lib.generators.mkvaluestringdefault">lib.generators.mkValueStringDefault</h3>
+<p><em>v</em></p>
+<p>Convert a value to a sensible default string representation. * The builtin <code>toString</code> function has some strange defaults, * suitable for bash scripts but not much else.</p>
+<ul>
+<li><p><code>v</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.generators.mkkeyvaluedefault">lib.generators.mkKeyValueDefault</h3>
+<p><em>pattern, mkValueString, sep, k, v, mkValueString</em></p>
+<p>Generate a line of key k and value v, separated by * character sep. If sep appears in k, it is escaped. * Helper for synaxes with different separators. <em> </em> mkValueString specifies how values should be formatted. <em> </em> mkKeyValueDefault {} ‚Äú:‚Äù ‚Äúf:oo‚Äù ‚Äúbar‚Äù * &gt; ‚Äúf:oo:bar‚Äù</p>
+<ul>
+<li><p><code>pattern</code></p>
+<p>Structured function argument</p></li>
+<li><p><code>mkValueString</code></p>
+<p>Function argument</p></li>
+<li><p><code>sep</code></p>
+<p>Function argument</p></li>
+<li><p><code>k</code></p>
+<p>Function argument</p></li>
+<li><p><code>v</code></p>
+<p>Function argument</p></li>
+<li><p><code>mkValueString</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.generators.tokeyvalue">lib.generators.toKeyValue</h3>
+<p><em>pattern, mkKeyValue, listsAsDuplicateKeys, mkKeyValue, listsAsDuplicateKeys</em></p>
+<p>Generate a key-value-style config file from an attrset. <em> </em> mkKeyValue is the same as in toINI.</p>
+<ul>
+<li><p><code>pattern</code></p>
+<p>Structured function argument</p></li>
+<li><p><code>mkKeyValue</code></p>
+<p>Function argument</p></li>
+<li><p><code>listsAsDuplicateKeys</code></p>
+<p>Function argument</p></li>
+<li><p><code>mkKeyValue</code></p>
+<p>Function argument</p></li>
+<li><p><code>listsAsDuplicateKeys</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.generators.toini">lib.generators.toINI</h3>
+<p><em>pattern, mkSectionName, mkKeyValue, listsAsDuplicateKeys, attrsOfAttrs, mkSectionName, mkKeyValue, listsAsDuplicateKeys</em></p>
+<p>Generate an INI-style config file from an * attrset of sections to an attrset of key-value pairs. <em> </em> generators.toINI {} { * foo = { hi = ‚Äú${pkgs.hello}‚Äù; ciao = ‚Äúbar‚Äù; }; * baz = { ‚Äúalso, integers‚Äù = 42; }; * } <em> </em>&gt; [baz] <em>&gt; also, integers=42 </em>&gt; <em>&gt; [foo] </em>&gt; ciao=bar <em>&gt; hi=/nix/store/y93qql1p5ggfnaqjjqhxcw0vqw95rlz0-hello-2.10 </em> * The mk* configuration attributes can generically change * the way sections and key-value strings are generated. <em> </em> For more examples see the test cases in ./tests.nix.</p>
+<ul>
+<li><p><code>pattern</code></p>
+<p>Structured function argument</p></li>
+<li><p><code>mkSectionName</code></p>
+<p>apply transformations (e.g.¬†escapes) to section names</p></li>
+<li><p><code>mkKeyValue</code></p>
+<p>format a setting line from key and value</p></li>
+<li><p><code>listsAsDuplicateKeys</code></p>
+<p>allow lists as values for duplicate keys</p></li>
+<li><p><code>attrsOfAttrs</code></p>
+<p>Function argument</p></li>
+<li><p><code>mkSectionName</code></p>
+<p>apply transformations (e.g.¬†escapes) to section names</p></li>
+<li><p><code>mkKeyValue</code></p>
+<p>format a setting line from key and value</p></li>
+<li><p><code>listsAsDuplicateKeys</code></p>
+<p>allow lists as values for duplicate keys</p></li>
+</ul>
+<h3 id="lib.generators.togitini">lib.generators.toGitINI</h3>
+<p><em>attrs</em></p>
+<p>Generate a git-config file from an attrset. <em> </em> It has two major differences from the regular INI format: <em> </em> 1. values are indented with tabs * 2. sections can have sub-sections <em> </em> generators.toGitINI { * url.‚Äùssh://git@github.com/‚Äú.insteadOf =‚Äùhttps://github.com‚Äù; * user.name = ‚Äúedolstra‚Äù; * } <em> </em>&gt; [url ‚Äússh://git@github.com/‚Äù] <em>&gt; insteadOf = https://github.com/ </em>&gt; <em>&gt; [user] </em>&gt; name = edolstra</p>
+<ul>
+<li><p><code>attrs</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.generators.tojson">lib.generators.toJSON</h3>
+<p>__</p>
+<p>Generates JSON from an arbitrary (non-function) value. * For more information see the documentation of the builtin.</p>
+<h3 id="lib.generators.toyaml">lib.generators.toYAML</h3>
+<p>__</p>
+<p>YAML has been a strict superset of JSON since 1.2, so we * use toJSON. Before it only had a few differences referring * to implicit typing rules, so it should work with older * parsers as well.</p>
+<h3 id="lib.generators.topretty">lib.generators.toPretty</h3>
+<p><em>pattern, allowPrettyValues, multiline, allowPrettyValues, multiline</em></p>
+<p>Pretty print a value, akin to <code>builtins.trace</code>. * Should probably be a builtin as well.</p>
+<ul>
+<li><p><code>pattern</code></p>
+<p>Structured function argument</p></li>
+<li><p><code>allowPrettyValues</code></p>
+<p>If this option is true, attrsets like { __pretty = fn; val = ‚Ä¶; } will use fn to convert val to a pretty printed representation. (This means fn is type Val -&gt; String.)</p></li>
+<li><p><code>multiline</code></p>
+<p>If this option is true, the output is indented with newlines for attribute sets and lists</p></li>
+<li><p><code>allowPrettyValues</code></p>
+<p>If this option is true, attrsets like { __pretty = fn; val = ‚Ä¶; } will use fn to convert val to a pretty printed representation. (This means fn is type Val -&gt; String.)</p></li>
+<li><p><code>multiline</code></p>
+<p>If this option is true, the output is indented with newlines for attribute sets and lists</p></li>
+</ul>
+<h3 id="lib.generators.todhall">lib.generators.toDhall</h3>
+<p><em>v</em></p>
+<p>Translate a simple Nix expression to Dhall notation. * Note that integers are translated to Integer and never * the Natural type.</p>
+<ul>
+<li><p><code>v</code></p>
+<p>Function argument</p></li>
+</ul>
 <h2 id="list-manipulation-functions">List manipulation functions</h2>
 <h3 id="lib.lists.singleton">lib.lists.singleton</h3>
 <p><em>x</em></p>
@@ -2114,14 +2392,324 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <li><p><code>b</code></p>
 <p>Function argument</p></li>
 </ul>
-<h2 id="nixos-nixpkgs-option-handling">NixOS / nixpkgs option handling</h2>
+<h2 id="meta-functions">Meta functions</h2>
+<h3 id="lib.meta.addmetaattrs">lib.meta.addMetaAttrs</h3>
+<p><em>newAttrs, drv</em></p>
+<p>Add to or override the meta attributes of the given derivation.</p>
+<ul>
+<li><p><code>newAttrs</code></p>
+<p>Function argument</p></li>
+<li><p><code>drv</code></p>
+<p>Function argument</p></li>
+</ul>
+<p>lib.meta.addMetaAttrs usage example:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="ex">addMetaAttrs</span> {description = <span class="st">&quot;Bla blah&quot;</span><span class="kw">;</span><span class="er">}</span> <span class="ex">somePkg</span></span></code></pre></div>
+<h3 id="lib.meta.dontdistribute">lib.meta.dontDistribute</h3>
+<p><em>drv</em></p>
+<p>Disable Hydra builds of given derivation.</p>
+<ul>
+<li><p><code>drv</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.setname">lib.meta.setName</h3>
+<p><em>name, drv</em></p>
+<p>Change the symbolic name of a package for presentation purposes (i.e., so that nix-env users can tell them apart).</p>
+<ul>
+<li><p><code>name</code></p>
+<p>Function argument</p></li>
+<li><p><code>drv</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.updatename">lib.meta.updateName</h3>
+<p><em>updater, drv</em></p>
+<p>Like `setName‚Äô, but takes the previous name as an argument.</p>
+<ul>
+<li><p><code>updater</code></p>
+<p>Function argument</p></li>
+<li><p><code>drv</code></p>
+<p>Function argument</p></li>
+</ul>
+<p>lib.meta.updateName usage example:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="ex">updateName</span> <span class="er">(</span><span class="ex">oldName:</span> oldName + <span class="st">&quot;-experimental&quot;</span><span class="kw">)</span> <span class="ex">somePkg</span></span></code></pre></div>
+<h3 id="lib.meta.appendtoname">lib.meta.appendToName</h3>
+<p><em>suffix</em></p>
+<p>Append a suffix to the name of a package (before the version part).</p>
+<ul>
+<li><p><code>suffix</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.mapderivationattrset">lib.meta.mapDerivationAttrset</h3>
+<p><em>f, set</em></p>
+<p>Apply a function to each derivation and only to derivations in an attrset.</p>
+<ul>
+<li><p><code>f</code></p>
+<p>Function argument</p></li>
+<li><p><code>set</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.setprio">lib.meta.setPrio</h3>
+<p><em>priority</em></p>
+<p>Set the nix-env priority of the package.</p>
+<ul>
+<li><p><code>priority</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.lowprio">lib.meta.lowPrio</h3>
+<p>__</p>
+<p>Decrease the nix-env priority of the package, i.e., other versions/variants of the package will be preferred.</p>
+<h3 id="lib.meta.lowprioset">lib.meta.lowPrioSet</h3>
+<p><em>set</em></p>
+<p>Apply lowPrio to an attrset with derivations</p>
+<ul>
+<li><p><code>set</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.hiprio">lib.meta.hiPrio</h3>
+<p>__</p>
+<p>Increase the nix-env priority of the package, i.e., this version/variant of the package will be preferred.</p>
+<h3 id="lib.meta.hiprioset">lib.meta.hiPrioSet</h3>
+<p><em>set</em></p>
+<p>Apply hiPrio to an attrset with derivations</p>
+<ul>
+<li><p><code>set</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.platformmatch">lib.meta.platformMatch</h3>
+<p><em>platform, elem</em></p>
+<p>Check to see if a platform is matched by the given <code>meta.platforms</code> element.</p>
+<ul>
+<li><p><code>platform</code></p>
+<p>Function argument</p></li>
+<li><p><code>elem</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.availableon">lib.meta.availableOn</h3>
+<p><em>platform, pkg</em></p>
+<p>Check if a package is available on a given platform.</p>
+<ul>
+<li><p><code>platform</code></p>
+<p>Function argument</p></li>
+<li><p><code>pkg</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.meta.getlicensefromspdxid">lib.meta.getLicenseFromSpdxId</h3>
+<p>__</p>
+<p><code>getLicenseFromSpdxId :: str -&gt; AttrSet</code></p>
+<p>Get the corresponding attribute in lib.licenses from the SPDX ID. For SPDX IDs, see https://spdx.org/licenses</p>
+<p>lib.meta.getLicenseFromSpdxId usage example:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lib.getLicenseFromSpdxId</span> <span class="st">&quot;MIT&quot;</span> == lib.licenses.mit</span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="ex">lib.getLicenseFromSpdxId</span> <span class="st">&quot;mIt&quot;</span> == lib.licenses.mit</span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="ex">lib.getLicenseFromSpdxId</span> <span class="st">&quot;MY LICENSE&quot;</span></span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> trace: warning: getLicenseFromSpdxId: No license matches the given SPDX ID: MY LICENSE</span>
+<span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> { shortName = <span class="st">&quot;MY LICENSE&quot;</span><span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
+<h2 id="modules-functions">Modules functions</h2>
+<h3 id="lib.modules.evalmodules">lib.modules.evalModules</h3>
+<p>__</p>
+<p>Evaluate a set of modules. The result is a set with the attributes:</p>
+<h3 id="lib.modules.collectstructuredmodules">lib.modules.collectStructuredModules</h3>
+<p>__</p>
+<p>Collects all modules recursively into the form</p>
+<h3 id="lib.modules.unifymodulesyntax">lib.modules.unifyModuleSyntax</h3>
+<p><em>file, key, m</em></p>
+<p>Massage a module into canonical form, that is, a set consisting of ‚Äòoptions‚Äô, ‚Äòconfig‚Äô and ‚Äòimports‚Äô attributes.</p>
+<ul>
+<li><p><code>file</code></p>
+<p>Function argument</p></li>
+<li><p><code>key</code></p>
+<p>Function argument</p></li>
+<li><p><code>m</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mergemodules">lib.modules.mergeModules</h3>
+<p><em>prefix, modules</em></p>
+<p>Merge a list of modules. This will recurse over the option declarations in all modules, combining them into a single set. At the same time, for each option declaration, it will merge the corresponding option definitions in all machines, returning them in the ‚Äòvalue‚Äô attribute of each option.</p>
+<ul>
+<li><p><code>prefix</code></p>
+<p>Function argument</p></li>
+<li><p><code>modules</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.byname">lib.modules.byName</h3>
+<p><em>attr, f, modules</em></p>
+<p>byName is like foldAttrs, but will look for attributes to merge in the specified attribute name.</p>
+<ul>
+<li><p><code>attr</code></p>
+<p>Function argument</p></li>
+<li><p><code>f</code></p>
+<p>Function argument</p></li>
+<li><p><code>modules</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.options">lib.modules.options‚Äô</h3>
+<p>__</p>
+<p>Add the modules of the current option to the list of modules already collected. The options attribute except either a list of submodules or a submodule. For each submodule, we add the file of the current option declaration as the file use for the submodule. If the submodule defines any filename, then we ignore the enclosing option file.</p>
+<h3 id="lib.modules.mergeoptiondecls">lib.modules.mergeOptionDecls</h3>
+<p>__</p>
+<p>Merge multiple option declarations into a single declaration. In general, there should be only one declaration of each option. The exception is the ‚Äòoptions‚Äô attribute, which specifies sub-options. These can be specified multiple times to allow one module to add sub-options to an option declared somewhere else (e.g.¬†multiple modules define sub-options for ‚ÄòfileSystems‚Äô).</p>
+<h3 id="lib.modules.evaloptionvalue">lib.modules.evalOptionValue</h3>
+<p><em>loc, opt, defs</em></p>
+<p>Merge all the definitions of an option to produce the final config value.</p>
+<ul>
+<li><p><code>loc</code></p>
+<p>Function argument</p></li>
+<li><p><code>opt</code></p>
+<p>Function argument</p></li>
+<li><p><code>defs</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.pushdownproperties">lib.modules.pushDownProperties</h3>
+<p><em>cfg</em></p>
+<p>Given a config set, expand mkMerge properties, and push down the other properties into the children. The result is a list of config sets that do not have properties at top-level. For example,</p>
+<ul>
+<li><p><code>cfg</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.dischargeproperties">lib.modules.dischargeProperties</h3>
+<p><em>def</em></p>
+<p>Given a config value, expand mkMerge properties, and discharge any mkIf conditions. That is, this is the place where mkIf conditions are actually evaluated. The result is a list of config values. For example, ‚ÄòmkIf false x‚Äô yields ‚Äò[]‚Äô, ‚ÄòmkIf true x‚Äô yields ‚Äò[x]‚Äô, and</p>
+<ul>
+<li><p><code>def</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.filteroverrides">lib.modules.filterOverrides</h3>
+<p><em>defs</em></p>
+<p>Given a list of config values, process the mkOverride properties, that is, return the values that have the highest (that is, numerically lowest) priority, and strip the mkOverride properties. For example,</p>
+<ul>
+<li><p><code>defs</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.sortproperties">lib.modules.sortProperties</h3>
+<p><em>defs</em></p>
+<p>Sort a list of properties. The sort priority of a property is 1000 by default, but can be overridden by wrapping the property using mkOrder.</p>
+<ul>
+<li><p><code>defs</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.fixupoptiontype">lib.modules.fixupOptionType</h3>
+<p><em>loc, opt</em></p>
+<p>Hack for backward compatibility: convert options of type optionSet to options of type submodule. FIXME: remove eventually.</p>
+<ul>
+<li><p><code>loc</code></p>
+<p>Function argument</p></li>
+<li><p><code>opt</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mkif">lib.modules.mkIf</h3>
+<p><em>condition, content</em></p>
+<p>Properties.</p>
+<ul>
+<li><p><code>condition</code></p>
+<p>Function argument</p></li>
+<li><p><code>content</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.fixmergemodules">lib.modules.fixMergeModules</h3>
+<p><em>modules, args</em></p>
+<p>Compatibility.</p>
+<ul>
+<li><p><code>modules</code></p>
+<p>Function argument</p></li>
+<li><p><code>args</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mkremovedoptionmodule">lib.modules.mkRemovedOptionModule</h3>
+<p><em>optionName, replacementInstructions, pattern, options, options</em></p>
+<p>Return a module that causes a warning to be shown if the specified option is defined. For example,</p>
+<ul>
+<li><p><code>optionName</code></p>
+<p>Function argument</p></li>
+<li><p><code>replacementInstructions</code></p>
+<p>Function argument</p></li>
+<li><p><code>pattern</code></p>
+<p>Structured function argument</p></li>
+<li><p><code>options</code></p>
+<p>Function argument</p></li>
+<li><p><code>options</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mkrenamedoptionmodule">lib.modules.mkRenamedOptionModule</h3>
+<p><em>from, to</em></p>
+<p>Return a module that causes a warning to be shown if the specified ‚Äúfrom‚Äù option is defined; the defined value is however forwarded to the ‚Äúto‚Äù option. This can be used to rename options while providing backward compatibility. For example,</p>
+<ul>
+<li><p><code>from</code></p>
+<p>Function argument</p></li>
+<li><p><code>to</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mkmergedoptionmodule">lib.modules.mkMergedOptionModule</h3>
+<p><em>from, to, mergeFn, pattern, config, options, config, options</em></p>
+<p>Return a module that causes a warning to be shown if any of the ‚Äúfrom‚Äù option is defined; the defined values can be used in the ‚ÄúmergeFn‚Äù to set the ‚Äúto‚Äù value. This function can be used to merge multiple options into one that has a different type.</p>
+<ul>
+<li><p><code>from</code></p>
+<p>Function argument</p></li>
+<li><p><code>to</code></p>
+<p>Function argument</p></li>
+<li><p><code>mergeFn</code></p>
+<p>Function argument</p></li>
+<li><p><code>pattern</code></p>
+<p>Structured function argument</p></li>
+<li><p><code>config</code></p>
+<p>Function argument</p></li>
+<li><p><code>options</code></p>
+<p>Function argument</p></li>
+<li><p><code>config</code></p>
+<p>Function argument</p></li>
+<li><p><code>options</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mkchangedoptionmodule">lib.modules.mkChangedOptionModule</h3>
+<p><em>from, to, changeFn</em></p>
+<p>Single ‚Äúfrom‚Äù version of mkMergedOptionModule. Return a module that causes a warning to be shown if the ‚Äúfrom‚Äù option is defined; the defined value can be used in the ‚ÄúmergeFn‚Äù to set the ‚Äúto‚Äù value. This function can be used to change an option into another that has a different type.</p>
+<ul>
+<li><p><code>from</code></p>
+<p>Function argument</p></li>
+<li><p><code>to</code></p>
+<p>Function argument</p></li>
+<li><p><code>changeFn</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mkaliasoptionmodule">lib.modules.mkAliasOptionModule</h3>
+<p><em>from, to</em></p>
+<p>Like ‚ÄòmkRenamedOptionModule‚Äô, but doesn‚Äôt show a warning.</p>
+<ul>
+<li><p><code>from</code></p>
+<p>Function argument</p></li>
+<li><p><code>to</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.mkderivedconfig">lib.modules.mkDerivedConfig</h3>
+<p><em>opt, f</em></p>
+<p>mkDerivedConfig : Option a -&gt; (a -&gt; Definition b) -&gt; Definition b</p>
+<ul>
+<li><p><code>opt</code></p>
+<p>Function argument</p></li>
+<li><p><code>f</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.importjson">lib.modules.importJSON</h3>
+<p><em>file</em></p>
+<p>Use this function to import a JSON file as NixOS configuration.</p>
+<ul>
+<li><p><code>file</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.modules.importtoml">lib.modules.importTOML</h3>
+<p><em>file</em></p>
+<p>Use this function to import a TOML file as NixOS configuration.</p>
+<ul>
+<li><p><code>file</code></p>
+<p>Function argument</p></li>
+</ul>
+<h2 id="options-functions">Options functions</h2>
 <h3 id="lib.options.isoption">lib.options.isOption</h3>
 <p>__</p>
 <p><code>isOption :: a -&gt; bool</code></p>
 <p>Returns true when the given argument is an option</p>
 <p>lib.options.isOption usage example:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="ex">isOption</span> 1             // =<span class="op">&gt;</span> false</span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="ex">isOption</span> <span class="er">(</span><span class="ex">mkOption</span> {}<span class="kw">)</span> <span class="ex">//</span> =<span class="op">&gt;</span> true</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="ex">isOption</span> 1             // =<span class="op">&gt;</span> false</span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="ex">isOption</span> <span class="er">(</span><span class="ex">mkOption</span> {}<span class="kw">)</span> <span class="ex">//</span> =<span class="op">&gt;</span> true</span></code></pre></div>
 <h3 id="lib.options.mkoption">lib.options.mkOption</h3>
 <p><em>pattern, default, defaultText, example, description, relatedPackages, type, apply, internal, visible, readOnly, options, default, defaultText, example, description, relatedPackages, type, apply, internal, visible, readOnly, options</em></p>
 <p>Creates an Option attribute set. mkOption accepts an attribute set with the following keys:</p>
@@ -2145,7 +2733,7 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <li><p><code>internal</code></p>
 <p>Whether the option is for NixOS developers only.</p></li>
 <li><p><code>visible</code></p>
-<p>Whether the option shows up in the manual.</p></li>
+<p>Whether the option shows up in the manual. Default: true. Use false to hide the option and any sub-options from submodules. Use &quot;shallow&quot; to hide only sub-options.</p></li>
 <li><p><code>readOnly</code></p>
 <p>Whether the option can be set only once</p></li>
 <li><p><code>options</code></p>
@@ -2167,15 +2755,15 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <li><p><code>internal</code></p>
 <p>Whether the option is for NixOS developers only.</p></li>
 <li><p><code>visible</code></p>
-<p>Whether the option shows up in the manual.</p></li>
+<p>Whether the option shows up in the manual. Default: true. Use false to hide the option and any sub-options from submodules. Use &quot;shallow&quot; to hide only sub-options.</p></li>
 <li><p><code>readOnly</code></p>
 <p>Whether the option can be set only once</p></li>
 <li><p><code>options</code></p>
 <p>Deprecated, used by types.optionSet.</p></li>
 </ul>
 <p>lib.options.mkOption usage example:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mkOption</span> { }  // =<span class="op">&gt;</span> { _type = <span class="st">&quot;option&quot;</span><span class="kw">;</span> <span class="er">}</span></span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mkOption</span> { defaultText = <span class="st">&quot;foo&quot;</span><span class="kw">;</span> <span class="er">}</span> <span class="ex">//</span> =<span class="op">&gt;</span> { _type = <span class="st">&quot;option&quot;</span><span class="kw">;</span> <span class="ex">defaultText</span> = <span class="st">&quot;foo&quot;</span><span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mkOption</span> { }  // =<span class="op">&gt;</span> { _type = <span class="st">&quot;option&quot;</span><span class="kw">;</span> <span class="er">}</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mkOption</span> { default = <span class="st">&quot;foo&quot;</span><span class="kw">;</span> <span class="er">}</span> <span class="ex">//</span> =<span class="op">&gt;</span> { _type = <span class="st">&quot;option&quot;</span><span class="kw">;</span> <span class="ex">default</span> = <span class="st">&quot;foo&quot;</span><span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
 <h3 id="lib.options.mkenableoption">lib.options.mkEnableOption</h3>
 <p><em>name</em></p>
 <p>Creates an Option attribute set for a boolean value option i.e an option to be toggled on or off:</p>
@@ -2184,8 +2772,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Name for the created option</p></li>
 </ul>
 <p>lib.options.mkEnableOption usage example:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mkEnableOption</span> <span class="st">&quot;foo&quot;</span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> { _type = <span class="st">&quot;option&quot;</span><span class="kw">;</span> <span class="ex">default</span> = false<span class="kw">;</span> <span class="ex">description</span> = <span class="st">&quot;Whether to enable foo.&quot;</span><span class="kw">;</span> <span class="ex">example</span> = true<span class="kw">;</span> <span class="bu">type</span> = { ... }<span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mkEnableOption</span> <span class="st">&quot;foo&quot;</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> { _type = <span class="st">&quot;option&quot;</span><span class="kw">;</span> <span class="ex">default</span> = false<span class="kw">;</span> <span class="ex">description</span> = <span class="st">&quot;Whether to enable foo.&quot;</span><span class="kw">;</span> <span class="ex">example</span> = true<span class="kw">;</span> <span class="bu">type</span> = { ... }<span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
 <h3 id="lib.options.mksinkundeclaredoptions">lib.options.mkSinkUndeclaredOptions</h3>
 <p><em>attrs</em></p>
 <p>This option accepts anything, but it does not produce any result.</p>
@@ -2207,15 +2795,15 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p><code>getValues :: [ { value :: a } ] -&gt; [a]</code></p>
 <p>Extracts values of all ‚Äúvalue‚Äù keys of the given list.</p>
 <p>lib.options.getValues usage example:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getValues</span> [ { value = 1<span class="kw">;</span> <span class="er">}</span> <span class="kw">{</span> <span class="ex">value</span> = 2<span class="kw">;</span> <span class="kw">}</span> <span class="ex">]</span> // =<span class="op">&gt;</span> [ 1 2 ]</span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="ex">getValues</span> [ ]                               // =<span class="op">&gt;</span> [ ]</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getValues</span> [ { value = 1<span class="kw">;</span> <span class="er">}</span> <span class="kw">{</span> <span class="ex">value</span> = 2<span class="kw">;</span> <span class="kw">}</span> <span class="ex">]</span> // =<span class="op">&gt;</span> [ 1 2 ]</span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="ex">getValues</span> [ ]                               // =<span class="op">&gt;</span> [ ]</span></code></pre></div>
 <h3 id="lib.options.getfiles">lib.options.getFiles</h3>
 <p>__</p>
 <p><code>getFiles :: [ { file :: a } ] -&gt; [a]</code></p>
 <p>Extracts values of all ‚Äúfile‚Äù keys of the given list</p>
 <p>lib.options.getFiles usage example:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getFiles</span> [ { file = <span class="st">&quot;file1&quot;</span><span class="kw">;</span> <span class="er">}</span> <span class="kw">{</span> <span class="fu">file</span> = <span class="st">&quot;file2&quot;</span><span class="kw">;</span> <span class="kw">}</span> <span class="ex">]</span> // =<span class="op">&gt;</span> [ <span class="st">&quot;file1&quot;</span> <span class="st">&quot;file2&quot;</span> ]</span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="ex">getFiles</span> [ ]                                         // =<span class="op">&gt;</span> [ ]</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getFiles</span> [ { file = <span class="st">&quot;file1&quot;</span><span class="kw">;</span> <span class="er">}</span> <span class="kw">{</span> <span class="fu">file</span> = <span class="st">&quot;file2&quot;</span><span class="kw">;</span> <span class="kw">}</span> <span class="ex">]</span> // =<span class="op">&gt;</span> [ <span class="st">&quot;file1&quot;</span> <span class="st">&quot;file2&quot;</span> ]</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="ex">getFiles</span> [ ]                                         // =<span class="op">&gt;</span> [ ]</span></code></pre></div>
 <h3 id="lib.options.scruboptionvalue">lib.options.scrubOptionValue</h3>
 <p><em>x</em></p>
 <p>This function recursively removes all derivation attributes from <code>x</code> except for the <code>name</code> attribute.</p>
@@ -2223,9 +2811,16 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <li><p><code>x</code></p>
 <p>Function argument</p></li>
 </ul>
-<h3 id="lib.options.literalexample">lib.options.literalExample</h3>
+<h3 id="lib.options.literalexpression">lib.options.literalExpression</h3>
 <p><em>text</em></p>
-<p>For use in the <code>example</code> option attribute. It causes the given text to be included verbatim in documentation. This is necessary for example values that are not simple values, e.g., functions.</p>
+<p>For use in the <code>defaultText</code> and <code>example</code> option attributes. Causes the given string to be rendered verbatim in the documentation as Nix code. This is necessary for complex values, e.g.¬†functions, or values that depend on other values or packages.</p>
+<ul>
+<li><p><code>text</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.options.literaldocbook">lib.options.literalDocBook</h3>
+<p><em>text</em></p>
+<p>For use in the <code>defaultText</code> and <code>example</code> option attributes. Causes the given DocBook text to be inserted verbatim in the documentation, for when a <code>literalExpression</code> would be too hard to read.</p>
 <ul>
 <li><p><code>text</code></p>
 <p>Function argument</p></li>
@@ -2238,23 +2833,44 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.options.showOption usage example:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span> <span class="st">&quot;baz&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar.baz&quot;</span> <span class="st">&quot;tux&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.bar.baz.tux&quot;</span></span>
-<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Placeholders</span> will not be quoted as they are not actual values:</span>
-<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;*&quot;</span> <span class="st">&quot;bar&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.*.bar&quot;</span></span>
-<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;&lt;name&gt;&quot;</span> <span class="st">&quot;bar&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.&lt;name&gt;.bar&quot;</span></span>
-<span id="cb126-7"><a href="#cb126-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-8"><a href="#cb126-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Unlike</span> attributes, options can also start with numbers:</span>
-<span id="cb126-9"><a href="#cb126-9" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;windowManager&quot;</span> <span class="st">&quot;2bwm&quot;</span> <span class="st">&quot;enable&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;windowManager.2bwm.enable&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span> <span class="st">&quot;baz&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar.baz&quot;</span> <span class="st">&quot;tux&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.bar.baz.tux&quot;</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Placeholders</span> will not be quoted as they are not actual values:</span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;*&quot;</span> <span class="st">&quot;bar&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.*.bar&quot;</span></span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;&lt;name&gt;&quot;</span> <span class="st">&quot;bar&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;foo.&lt;name&gt;.bar&quot;</span></span>
+<span id="cb129-7"><a href="#cb129-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-8"><a href="#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Unlike</span> attributes, options can also start with numbers:</span>
+<span id="cb129-9"><a href="#cb129-9" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">showOption</span> [<span class="st">&quot;windowManager&quot;</span> <span class="st">&quot;2bwm&quot;</span> <span class="st">&quot;enable&quot;</span>]<span class="kw">)</span> <span class="ex">==</span> <span class="st">&quot;windowManager.2bwm.enable&quot;</span></span></code></pre></div>
+<h2 id="sources-functions">Sources functions</h2>
+<h3 id="lib.sources.trace">lib.sources.trace</h3>
+<p><em>src</em></p>
+<p><code>sources.trace :: sourceLike -&gt; Source</code></p>
+<p>Add logging to a source, for troubleshooting the filtering behavior.</p>
+<ul>
+<li><p><code>src</code></p>
+<p>Source to debug. The returned source will behave like this source, but also log its filter invocations.</p></li>
+</ul>
+<h3 id="lib.sources.sourcefilesbysuffices">lib.sources.sourceFilesBySuffices</h3>
+<p><em>src, exts</em></p>
+<p><code>sourceLike -&gt; [String] -&gt; Source</code></p>
+<p>Get all files ending with the specified suffices from the given source directory or its descendants, omitting files that do not match any suffix. The result of the example below will include files like <code>./dir/module.c</code> and <code>./dir/subdir/doc.xml</code> if present.</p>
+<ul>
+<li><p><code>src</code></p>
+<p>Path or source containing the files to be returned</p></li>
+<li><p><code>exts</code></p>
+<p>A list of file suffix strings</p></li>
+</ul>
+<p>lib.sources.sourceFilesBySuffices usage example:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sourceFilesBySuffices</span> ./. [ <span class="st">&quot;.xml&quot;</span> <span class="st">&quot;.c&quot;</span> ]</span></code></pre></div>
 <h2 id="string-manipulation-functions">String manipulation functions</h2>
 <h3 id="lib.strings.concatstrings">lib.strings.concatStrings</h3>
 <p>__</p>
 <p><code>concatStrings :: [string] -&gt; string</code></p>
 <p>Concatenate a list of strings.</p>
 <p>lib.strings.concatStrings usage example:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatStrings</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span>]</span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;foobar&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatStrings</span> [<span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span>]</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;foobar&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.concatmapstrings">lib.strings.concatMapStrings</h3>
 <p><em>f, list</em></p>
 <p><code>concatMapStrings :: (a -&gt; string) -&gt; [a] -&gt; string</code></p>
@@ -2266,8 +2882,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.concatMapStrings usage example:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatMapStrings</span> <span class="er">(</span><span class="ex">x:</span> <span class="st">&quot;a&quot;</span> + x<span class="kw">)</span> <span class="ex">[</span><span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span>]</span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;afooabar&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatMapStrings</span> <span class="er">(</span><span class="ex">x:</span> <span class="st">&quot;a&quot;</span> + x<span class="kw">)</span> <span class="ex">[</span><span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span>]</span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;afooabar&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.concatimapstrings">lib.strings.concatImapStrings</h3>
 <p><em>f, list</em></p>
 <p><code>concatImapStrings :: (int -&gt; a -&gt; string) -&gt; [a] -&gt; string</code></p>
@@ -2279,8 +2895,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.concatImapStrings usage example:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatImapStrings</span> <span class="er">(</span><span class="ex">pos:</span> x: <span class="st">&quot;</span><span class="va">${toString</span><span class="er"> pos</span><span class="va">}</span><span class="st">-</span><span class="va">${x}</span><span class="st">&quot;</span><span class="kw">)</span> <span class="ex">[</span><span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span>]</span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;1-foo2-bar&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatImapStrings</span> <span class="er">(</span><span class="ex">pos:</span> x: <span class="st">&quot;</span><span class="va">${toString</span><span class="er"> pos</span><span class="va">}</span><span class="st">-</span><span class="va">${x}</span><span class="st">&quot;</span><span class="kw">)</span> <span class="ex">[</span><span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span>]</span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;1-foo2-bar&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.intersperse">lib.strings.intersperse</h3>
 <p><em>separator, list</em></p>
 <p><code>intersperse :: a -&gt; [a] -&gt; [a]</code></p>
@@ -2292,15 +2908,15 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Input list</p></li>
 </ul>
 <p>lib.strings.intersperse usage example:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="ex">intersperse</span> <span class="st">&quot;/&quot;</span> [<span class="st">&quot;usr&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;bin&quot;</span>]</span>
-<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [<span class="st">&quot;usr&quot;</span> <span class="st">&quot;/&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;/&quot;</span> <span class="st">&quot;bin&quot;</span>].</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="ex">intersperse</span> <span class="st">&quot;/&quot;</span> [<span class="st">&quot;usr&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;bin&quot;</span>]</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [<span class="st">&quot;usr&quot;</span> <span class="st">&quot;/&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;/&quot;</span> <span class="st">&quot;bin&quot;</span>].</span></code></pre></div>
 <h3 id="lib.strings.concatstringssep">lib.strings.concatStringsSep</h3>
 <p>__</p>
 <p><code>concatStringsSep :: string -&gt; [string] -&gt; string</code></p>
 <p>Concatenate a list of strings with a separator between each element</p>
 <p>lib.strings.concatStringsSep usage example:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatStringsSep</span> <span class="st">&quot;/&quot;</span> [<span class="st">&quot;usr&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;bin&quot;</span>]</span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;usr/local/bin&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatStringsSep</span> <span class="st">&quot;/&quot;</span> [<span class="st">&quot;usr&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;bin&quot;</span>]</span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;usr/local/bin&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.concatmapstringssep">lib.strings.concatMapStringsSep</h3>
 <p><em>sep, f, list</em></p>
 <p><code>concatMapStringsSep :: string -&gt; (a -&gt; string) -&gt; [a] -&gt; string</code></p>
@@ -2314,8 +2930,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>List of input strings</p></li>
 </ul>
 <p>lib.strings.concatMapStringsSep usage example:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatMapStringsSep</span> <span class="st">&quot;-&quot;</span> <span class="er">(</span><span class="ex">x:</span> toUpper x<span class="kw">)</span>  <span class="ex">[</span><span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span> <span class="st">&quot;baz&quot;</span>]</span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;FOO-BAR-BAZ&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatMapStringsSep</span> <span class="st">&quot;-&quot;</span> <span class="er">(</span><span class="ex">x:</span> toUpper x<span class="kw">)</span>  <span class="ex">[</span><span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span> <span class="st">&quot;baz&quot;</span>]</span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;FOO-BAR-BAZ&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.concatimapstringssep">lib.strings.concatImapStringsSep</h3>
 <p><em>sep, f, list</em></p>
 <p><code>concatIMapStringsSep :: string -&gt; (int -&gt; a -&gt; string) -&gt; [a] -&gt; string</code></p>
@@ -2329,8 +2945,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>List of input strings</p></li>
 </ul>
 <p>lib.strings.concatImapStringsSep usage example:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatImapStringsSep</span> <span class="st">&quot;-&quot;</span> <span class="er">(</span><span class="ex">pos:</span> x: toString <span class="er">(</span><span class="ex">x</span> / pos<span class="kw">))</span> <span class="bu">[</span> 6 6 6 <span class="bu">]</span></span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;6-3-2&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="ex">concatImapStringsSep</span> <span class="st">&quot;-&quot;</span> <span class="er">(</span><span class="ex">pos:</span> x: toString <span class="er">(</span><span class="ex">x</span> / pos<span class="kw">))</span> <span class="bu">[</span> 6 6 6 <span class="bu">]</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;6-3-2&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.makesearchpath">lib.strings.makeSearchPath</h3>
 <p><em>subDir, paths</em></p>
 <p><code>makeSearchPath :: string -&gt; [string] -&gt; string</code></p>
@@ -2342,10 +2958,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>List of base paths</p></li>
 </ul>
 <p>lib.strings.makeSearchPath usage example:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeSearchPath</span> <span class="st">&quot;bin&quot;</span> [<span class="st">&quot;/root&quot;</span> <span class="st">&quot;/usr&quot;</span> <span class="st">&quot;/usr/local&quot;</span>]</span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/root/bin:/usr/bin:/usr/local/bin&quot;</span></span>
-<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="ex">makeSearchPath</span> <span class="st">&quot;bin&quot;</span> [<span class="st">&quot;&quot;</span>]</span>
-<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/bin&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeSearchPath</span> <span class="st">&quot;bin&quot;</span> [<span class="st">&quot;/root&quot;</span> <span class="st">&quot;/usr&quot;</span> <span class="st">&quot;/usr/local&quot;</span>]</span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/root/bin:/usr/bin:/usr/local/bin&quot;</span></span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="ex">makeSearchPath</span> <span class="st">&quot;bin&quot;</span> [<span class="st">&quot;&quot;</span>]</span>
+<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/bin&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.makesearchpathoutput">lib.strings.makeSearchPathOutput</h3>
 <p><em>output, subDir, pkgs</em></p>
 <p><code>string -&gt; string -&gt; [package] -&gt; string</code></p>
@@ -2359,23 +2975,23 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>List of packages</p></li>
 </ul>
 <p>lib.strings.makeSearchPathOutput usage example:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeSearchPathOutput</span> <span class="st">&quot;dev&quot;</span> <span class="st">&quot;bin&quot;</span> [ pkgs.openssl pkgs.zlib ]</span>
-<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/nix/store/9rz8gxhzf8sw4kf2j2f1grr49w8zx5vj-openssl-1.0.1r-dev/bin:/nix/store/wwh7mhwh269sfjkm6k5665b5kgp7jrk2-zlib-1.2.8/bin&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeSearchPathOutput</span> <span class="st">&quot;dev&quot;</span> <span class="st">&quot;bin&quot;</span> [ pkgs.openssl pkgs.zlib ]</span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/nix/store/9rz8gxhzf8sw4kf2j2f1grr49w8zx5vj-openssl-1.0.1r-dev/bin:/nix/store/wwh7mhwh269sfjkm6k5665b5kgp7jrk2-zlib-1.2.8/bin&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.makelibrarypath">lib.strings.makeLibraryPath</h3>
 <p>__</p>
 <p>Construct a library search path (such as RPATH) containing the libraries for a set of packages</p>
 <p>lib.strings.makeLibraryPath usage example:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeLibraryPath</span> [ <span class="st">&quot;/usr&quot;</span> <span class="st">&quot;/usr/local&quot;</span> ]</span>
-<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/usr/lib:/usr/local/lib&quot;</span></span>
-<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgs</span> = import <span class="op">&lt;</span>nixpkgs<span class="op">&gt;</span> { }</span>
-<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="ex">makeLibraryPath</span> [ pkgs.openssl pkgs.zlib ]</span>
-<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/nix/store/9rz8gxhzf8sw4kf2j2f1grr49w8zx5vj-openssl-1.0.1r/lib:/nix/store/wwh7mhwh269sfjkm6k5665b5kgp7jrk2-zlib-1.2.8/lib&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeLibraryPath</span> [ <span class="st">&quot;/usr&quot;</span> <span class="st">&quot;/usr/local&quot;</span> ]</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/usr/lib:/usr/local/lib&quot;</span></span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgs</span> = import <span class="op">&lt;</span>nixpkgs<span class="op">&gt;</span> { }</span>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="ex">makeLibraryPath</span> [ pkgs.openssl pkgs.zlib ]</span>
+<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/nix/store/9rz8gxhzf8sw4kf2j2f1grr49w8zx5vj-openssl-1.0.1r/lib:/nix/store/wwh7mhwh269sfjkm6k5665b5kgp7jrk2-zlib-1.2.8/lib&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.makebinpath">lib.strings.makeBinPath</h3>
 <p>__</p>
 <p>Construct a binary search path (such as $PATH) containing the binaries for a set of packages.</p>
 <p>lib.strings.makeBinPath usage example:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeBinPath</span> [<span class="st">&quot;/root&quot;</span> <span class="st">&quot;/usr&quot;</span> <span class="st">&quot;/usr/local&quot;</span>]</span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/root/bin:/usr/bin:/usr/local/bin&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="ex">makeBinPath</span> [<span class="st">&quot;/root&quot;</span> <span class="st">&quot;/usr&quot;</span> <span class="st">&quot;/usr/local&quot;</span>]</span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;/root/bin:/usr/bin:/usr/local/bin&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.optionalstring">lib.strings.optionalString</h3>
 <p><em>cond, string</em></p>
 <p><code>optionalString :: bool -&gt; string -&gt; string</code></p>
@@ -2387,10 +3003,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>String to return if condition is true</p></li>
 </ul>
 <p>lib.strings.optionalString usage example:</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="ex">optionalString</span> true <span class="st">&quot;some-string&quot;</span></span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;some-string&quot;</span></span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="ex">optionalString</span> false <span class="st">&quot;some-string&quot;</span></span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="ex">optionalString</span> true <span class="st">&quot;some-string&quot;</span></span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;some-string&quot;</span></span>
+<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="ex">optionalString</span> false <span class="st">&quot;some-string&quot;</span></span>
+<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.hasprefix">lib.strings.hasPrefix</h3>
 <p><em>pref, str</em></p>
 <p><code>hasPrefix :: string -&gt; string -&gt; bool</code></p>
@@ -2402,10 +3018,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Input string</p></li>
 </ul>
 <p>lib.strings.hasPrefix usage example:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hasPrefix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;foobar&quot;</span></span>
-<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hasPrefix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;barfoo&quot;</span></span>
-<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hasPrefix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;foobar&quot;</span></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hasPrefix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;barfoo&quot;</span></span>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
 <h3 id="lib.strings.hassuffix">lib.strings.hasSuffix</h3>
 <p><em>suffix, content</em></p>
 <p><code>hasSuffix :: string -&gt; string -&gt; bool</code></p>
@@ -2417,10 +3033,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Input string</p></li>
 </ul>
 <p>lib.strings.hasSuffix usage example:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hasSuffix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;foobar&quot;</span></span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span>
-<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hasSuffix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;barfoo&quot;</span></span>
-<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hasSuffix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;foobar&quot;</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hasSuffix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;barfoo&quot;</span></span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span></code></pre></div>
 <h3 id="lib.strings.hasinfix">lib.strings.hasInfix</h3>
 <p><em>infix, content</em></p>
 <p><code>hasInfix :: string -&gt; string -&gt; bool</code></p>
@@ -2432,14 +3048,14 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.hasInfix usage example:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;bc&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
-<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;ab&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
-<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb141-5"><a href="#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;cd&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
-<span id="cb141-6"><a href="#cb141-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb141-7"><a href="#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
-<span id="cb141-8"><a href="#cb141-8" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;bc&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;ab&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;cd&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb145-7"><a href="#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="ex">hasInfix</span> <span class="st">&quot;foo&quot;</span> <span class="st">&quot;abcd&quot;</span></span>
+<span id="cb145-8"><a href="#cb145-8" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
 <h3 id="lib.strings.stringtocharacters">lib.strings.stringToCharacters</h3>
 <p><em>s</em></p>
 <p><code>stringToCharacters :: string -&gt; [string]</code></p>
@@ -2449,12 +3065,12 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.stringToCharacters usage example:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stringToCharacters</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ ]</span>
-<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="ex">stringToCharacters</span> <span class="st">&quot;abc&quot;</span></span>
-<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> ]</span>
-<span id="cb142-5"><a href="#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="ex">stringToCharacters</span> <span class="st">&quot;üí©&quot;</span></span>
-<span id="cb142-6"><a href="#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;ÔøΩ&quot;</span> <span class="st">&quot;ÔøΩ&quot;</span> <span class="st">&quot;ÔøΩ&quot;</span> <span class="st">&quot;ÔøΩ&quot;</span> ]</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stringToCharacters</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ ]</span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="ex">stringToCharacters</span> <span class="st">&quot;abc&quot;</span></span>
+<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> ]</span>
+<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="ex">stringToCharacters</span> <span class="st">&quot;üí©&quot;</span></span>
+<span id="cb146-6"><a href="#cb146-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;ÔøΩ&quot;</span> <span class="st">&quot;ÔøΩ&quot;</span> <span class="st">&quot;ÔøΩ&quot;</span> <span class="st">&quot;ÔøΩ&quot;</span> ]</span></code></pre></div>
 <h3 id="lib.strings.stringaschars">lib.strings.stringAsChars</h3>
 <p><em>f, s</em></p>
 <p><code>stringAsChars :: (string -&gt; string) -&gt; string -&gt; string</code></p>
@@ -2466,8 +3082,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Input string</p></li>
 </ul>
 <p>lib.strings.stringAsChars usage example:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stringAsChars</span> <span class="er">(</span><span class="ex">x:</span> if x == <span class="st">&quot;a&quot;</span> then <span class="st">&quot;i&quot;</span> else x<span class="kw">)</span> <span class="st">&quot;nax&quot;</span></span>
-<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;nix&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stringAsChars</span> <span class="er">(</span><span class="ex">x:</span> if x == <span class="st">&quot;a&quot;</span> then <span class="st">&quot;i&quot;</span> else x<span class="kw">)</span> <span class="st">&quot;nax&quot;</span></span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;nix&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.escape">lib.strings.escape</h3>
 <p><em>list</em></p>
 <p><code>escape :: [string] -&gt; string -&gt; string</code></p>
@@ -2477,8 +3093,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.escape usage example:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escape</span> [<span class="st">&quot;(&quot;</span> <span class="st">&quot;)&quot;</span>] <span class="st">&quot;(foo)&quot;</span></span>
-<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\\</span><span class="st">(foo</span><span class="dt">\\</span><span class="st">)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escape</span> [<span class="st">&quot;(&quot;</span> <span class="st">&quot;)&quot;</span>] <span class="st">&quot;(foo)&quot;</span></span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\\</span><span class="st">(foo</span><span class="dt">\\</span><span class="st">)&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.escapeshellarg">lib.strings.escapeShellArg</h3>
 <p><em>arg</em></p>
 <p><code>escapeShellArg :: string -&gt; string</code></p>
@@ -2488,15 +3104,15 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.escapeShellArg usage example:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeShellArg</span> <span class="st">&quot;esc&#39;ape\nme&quot;</span></span>
-<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;&#39;esc&#39;</span><span class="dt">\\</span><span class="st">&#39;&#39;ape\nme&#39;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeShellArg</span> <span class="st">&quot;esc&#39;ape\nme&quot;</span></span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;&#39;esc&#39;</span><span class="dt">\\</span><span class="st">&#39;&#39;ape\nme&#39;&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.escapeshellargs">lib.strings.escapeShellArgs</h3>
 <p>__</p>
 <p><code>escapeShellArgs :: [string] -&gt; string</code></p>
 <p>Quote all arguments to be safely passed to the Bourne shell.</p>
 <p>lib.strings.escapeShellArgs usage example:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeShellArgs</span> [<span class="st">&quot;one&quot;</span> <span class="st">&quot;two three&quot;</span> <span class="st">&quot;four&#39;five&quot;</span>]</span>
-<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;&#39;one&#39; &#39;two three&#39; &#39;four&#39;</span><span class="dt">\\</span><span class="st">&#39;&#39;five&#39;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeShellArgs</span> [<span class="st">&quot;one&quot;</span> <span class="st">&quot;two three&quot;</span> <span class="st">&quot;four&#39;five&quot;</span>]</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;&#39;one&#39; &#39;two three&#39; &#39;four&#39;</span><span class="dt">\\</span><span class="st">&#39;&#39;five&#39;&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.escapenixstring">lib.strings.escapeNixString</h3>
 <p><em>s</em></p>
 <p><code>string -&gt; string</code></p>
@@ -2506,15 +3122,15 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.escapeNixString usage example:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeNixString</span> <span class="st">&quot;hello</span><span class="dt">\$</span><span class="st">{}\n&quot;</span></span>
-<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\&quot;</span><span class="st">hello</span><span class="dt">\\\$</span><span class="st">{}</span><span class="dt">\\</span><span class="st">n</span><span class="dt">\&quot;</span><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeNixString</span> <span class="st">&quot;hello</span><span class="dt">\$</span><span class="st">{}\n&quot;</span></span>
+<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\&quot;</span><span class="st">hello</span><span class="dt">\\\$</span><span class="st">{}</span><span class="dt">\\</span><span class="st">n</span><span class="dt">\&quot;</span><span class="st">&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.escaperegex">lib.strings.escapeRegex</h3>
 <p>__</p>
 <p><code>string -&gt; string</code></p>
 <p>Turn a string into an exact regular expression</p>
 <p>lib.strings.escapeRegex usage example:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeRegex</span> <span class="st">&quot;[^a-z]*&quot;</span></span>
-<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\\</span><span class="st">[</span><span class="dt">\\</span><span class="st">^a-z]</span><span class="dt">\\</span><span class="st">*&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeRegex</span> <span class="st">&quot;[^a-z]*&quot;</span></span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\\</span><span class="st">[</span><span class="dt">\\</span><span class="st">^a-z]</span><span class="dt">\\</span><span class="st">*&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.escapenixidentifier">lib.strings.escapeNixIdentifier</h3>
 <p><em>s</em></p>
 <p><code>string -&gt; string</code></p>
@@ -2524,24 +3140,31 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.escapeNixIdentifier usage example:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeNixIdentifier</span> <span class="st">&quot;hello&quot;</span></span>
-<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;hello&quot;</span></span>
-<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeNixIdentifier</span> <span class="st">&quot;0abc&quot;</span></span>
-<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\&quot;</span><span class="st">0abc</span><span class="dt">\&quot;</span><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeNixIdentifier</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeNixIdentifier</span> <span class="st">&quot;0abc&quot;</span></span>
+<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;</span><span class="dt">\&quot;</span><span class="st">0abc</span><span class="dt">\&quot;</span><span class="st">&quot;</span></span></code></pre></div>
+<h3 id="lib.strings.escapexml">lib.strings.escapeXML</h3>
+<p>__</p>
+<p><code>string -&gt; string</code></p>
+<p>Escapes a string such that it is safe to include verbatim in an XML document.</p>
+<p>lib.strings.escapeXML usage example:</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="ex">escapeXML</span> <span class="st">&#39;&#39;&quot;test&quot;</span> <span class="st">&#39;test&#39;</span> <span class="op">&lt;</span> <span class="kw">&amp;</span> <span class="op">&gt;</span><span class="st">&#39;&#39;</span></span>
+<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;&amp;quot;test&amp;quot; &amp;apos;test&amp;apos; &amp;lt; &amp;amp; &amp;gt;&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.tolower">lib.strings.toLower</h3>
 <p>__</p>
 <p><code>toLower :: string -&gt; string</code></p>
 <p>Converts an ASCII string to lower-case.</p>
 <p>lib.strings.toLower usage example:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="ex">toLower</span> <span class="st">&quot;HOME&quot;</span></span>
-<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;home&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="ex">toLower</span> <span class="st">&quot;HOME&quot;</span></span>
+<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;home&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.toupper">lib.strings.toUpper</h3>
 <p>__</p>
 <p><code>toUpper :: string -&gt; string</code></p>
 <p>Converts an ASCII string to upper-case.</p>
 <p>lib.strings.toUpper usage example:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="ex">toUpper</span> <span class="st">&quot;home&quot;</span></span>
-<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;HOME&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="ex">toUpper</span> <span class="st">&quot;home&quot;</span></span>
+<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;HOME&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.addcontextfrom">lib.strings.addContextFrom</h3>
 <p><em>a, b</em></p>
 <p>Appends string context from another string. This is an implementation detail of Nix.</p>
@@ -2552,9 +3175,9 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.addContextFrom usage example:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgs</span> = import <span class="op">&lt;</span>nixpkgs<span class="op">&gt;</span> { }<span class="kw">;</span></span>
-<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="ex">addContextFrom</span> pkgs.coreutils <span class="st">&quot;bar&quot;</span></span>
-<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;bar&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgs</span> = import <span class="op">&lt;</span>nixpkgs<span class="op">&gt;</span> { }<span class="kw">;</span></span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="ex">addContextFrom</span> pkgs.coreutils <span class="st">&quot;bar&quot;</span></span>
+<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;bar&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.splitstring">lib.strings.splitString</h3>
 <p>__sep, <em>s</em></p>
 <p>Cut a string with a separator and produces a list of strings which were separated by this separator.</p>
@@ -2565,10 +3188,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.splitString usage example:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="ex">splitString</span> <span class="st">&quot;.&quot;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
-<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span> <span class="st">&quot;baz&quot;</span> ]</span>
-<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="ex">splitString</span> <span class="st">&quot;/&quot;</span> <span class="st">&quot;/usr/local/bin&quot;</span></span>
-<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;&quot;</span> <span class="st">&quot;usr&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;bin&quot;</span> ]</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="ex">splitString</span> <span class="st">&quot;.&quot;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;foo&quot;</span> <span class="st">&quot;bar&quot;</span> <span class="st">&quot;baz&quot;</span> ]</span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="ex">splitString</span> <span class="st">&quot;/&quot;</span> <span class="st">&quot;/usr/local/bin&quot;</span></span>
+<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;&quot;</span> <span class="st">&quot;usr&quot;</span> <span class="st">&quot;local&quot;</span> <span class="st">&quot;bin&quot;</span> ]</span></code></pre></div>
 <h3 id="lib.strings.removeprefix">lib.strings.removePrefix</h3>
 <p><em>prefix, str</em></p>
 <p><code>string -&gt; string -&gt; string</code></p>
@@ -2580,10 +3203,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Input string</p></li>
 </ul>
 <p>lib.strings.removePrefix usage example:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="ex">removePrefix</span> <span class="st">&quot;foo.&quot;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
-<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;bar.baz&quot;</span></span>
-<span id="cb154-3"><a href="#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="ex">removePrefix</span> <span class="st">&quot;xxx&quot;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
-<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="ex">removePrefix</span> <span class="st">&quot;foo.&quot;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;bar.baz&quot;</span></span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="ex">removePrefix</span> <span class="st">&quot;xxx&quot;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span>
+<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;foo.bar.baz&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.removesuffix">lib.strings.removeSuffix</h3>
 <p><em>suffix, str</em></p>
 <p><code>string -&gt; string -&gt; string</code></p>
@@ -2595,10 +3218,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Input string</p></li>
 </ul>
 <p>lib.strings.removeSuffix usage example:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="ex">removeSuffix</span> <span class="st">&quot;front&quot;</span> <span class="st">&quot;homefront&quot;</span></span>
-<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;home&quot;</span></span>
-<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="ex">removeSuffix</span> <span class="st">&quot;xxx&quot;</span> <span class="st">&quot;homefront&quot;</span></span>
-<span id="cb155-4"><a href="#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;homefront&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="ex">removeSuffix</span> <span class="st">&quot;front&quot;</span> <span class="st">&quot;homefront&quot;</span></span>
+<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;home&quot;</span></span>
+<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="ex">removeSuffix</span> <span class="st">&quot;xxx&quot;</span> <span class="st">&quot;homefront&quot;</span></span>
+<span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;homefront&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.versionolder">lib.strings.versionOlder</h3>
 <p><em>v1, v2</em></p>
 <p>Return true if string v1 denotes a version older than v2.</p>
@@ -2609,10 +3232,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.versionOlder usage example:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="ex">versionOlder</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.2&quot;</span></span>
-<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb156-3"><a href="#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="ex">versionOlder</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.1&quot;</span></span>
-<span id="cb156-4"><a href="#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="ex">versionOlder</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.2&quot;</span></span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="ex">versionOlder</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.1&quot;</span></span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
 <h3 id="lib.strings.versionatleast">lib.strings.versionAtLeast</h3>
 <p><em>v1, v2</em></p>
 <p>Return true if string v1 denotes a version equal to or newer than v2.</p>
@@ -2623,12 +3246,12 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.versionAtLeast usage example:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="ex">versionAtLeast</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.0&quot;</span></span>
-<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="ex">versionAtLeast</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.1&quot;</span></span>
-<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb157-5"><a href="#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="ex">versionAtLeast</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.2&quot;</span></span>
-<span id="cb157-6"><a href="#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="ex">versionAtLeast</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.0&quot;</span></span>
+<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb162-3"><a href="#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="ex">versionAtLeast</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.1&quot;</span></span>
+<span id="cb162-4"><a href="#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb162-5"><a href="#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="ex">versionAtLeast</span> <span class="st">&quot;1.1&quot;</span> <span class="st">&quot;1.2&quot;</span></span>
+<span id="cb162-6"><a href="#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
 <h3 id="lib.strings.getname">lib.strings.getName</h3>
 <p><em>x</em></p>
 <p>This function takes an argument that‚Äôs either a derivation or a derivation‚Äôs ‚Äúname‚Äù attribute and extracts the name part from that argument.</p>
@@ -2637,10 +3260,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.getName usage example:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getName</span> <span class="st">&quot;youtube-dl-2016.01.01&quot;</span></span>
-<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;youtube-dl&quot;</span></span>
-<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="ex">getName</span> pkgs.youtube-dl</span>
-<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;youtube-dl&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getName</span> <span class="st">&quot;youtube-dl-2016.01.01&quot;</span></span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;youtube-dl&quot;</span></span>
+<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="ex">getName</span> pkgs.youtube-dl</span>
+<span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;youtube-dl&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.getversion">lib.strings.getVersion</h3>
 <p><em>x</em></p>
 <p>This function takes an argument that‚Äôs either a derivation or a derivation‚Äôs ‚Äúname‚Äù attribute and extracts the version part from that argument.</p>
@@ -2649,10 +3272,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.getVersion usage example:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getVersion</span> <span class="st">&quot;youtube-dl-2016.01.01&quot;</span></span>
-<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;2016.01.01&quot;</span></span>
-<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="ex">getVersion</span> pkgs.youtube-dl</span>
-<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;2016.01.01&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="ex">getVersion</span> <span class="st">&quot;youtube-dl-2016.01.01&quot;</span></span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;2016.01.01&quot;</span></span>
+<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="ex">getVersion</span> pkgs.youtube-dl</span>
+<span id="cb164-4"><a href="#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;2016.01.01&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.namefromurl">lib.strings.nameFromURL</h3>
 <p><em>url, sep</em></p>
 <p>Extract name with version from URL. Ask for separator which is supposed to start extension.</p>
@@ -2663,10 +3286,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.nameFromURL usage example:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nameFromURL</span> <span class="st">&quot;https://nixos.org/releases/nix/nix-1.7/nix-1.7-x86_64-linux.tar.bz2&quot;</span> <span class="st">&quot;-&quot;</span></span>
-<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;nix&quot;</span></span>
-<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nameFromURL</span> <span class="st">&quot;https://nixos.org/releases/nix/nix-1.7/nix-1.7-x86_64-linux.tar.bz2&quot;</span> <span class="st">&quot;_&quot;</span></span>
-<span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;nix-1.7-x86&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nameFromURL</span> <span class="st">&quot;https://nixos.org/releases/nix/nix-1.7/nix-1.7-x86_64-linux.tar.bz2&quot;</span> <span class="st">&quot;-&quot;</span></span>
+<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;nix&quot;</span></span>
+<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nameFromURL</span> <span class="st">&quot;https://nixos.org/releases/nix/nix-1.7/nix-1.7-x86_64-linux.tar.bz2&quot;</span> <span class="st">&quot;_&quot;</span></span>
+<span id="cb165-4"><a href="#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;nix-1.7-x86&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.enablefeature">lib.strings.enableFeature</h3>
 <p><em>enable, feat</em></p>
 <p>Create an ‚Äì{enable,disable}-<feat> string that can be passed to standard GNU Autoconf scripts.</p>
@@ -2677,10 +3300,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.enableFeature usage example:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeature</span> true <span class="st">&quot;shared&quot;</span></span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--enable-shared&quot;</span></span>
-<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeature</span> false <span class="st">&quot;shared&quot;</span></span>
-<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--disable-shared&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeature</span> true <span class="st">&quot;shared&quot;</span></span>
+<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--enable-shared&quot;</span></span>
+<span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeature</span> false <span class="st">&quot;shared&quot;</span></span>
+<span id="cb166-4"><a href="#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--disable-shared&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.enablefeatureas">lib.strings.enableFeatureAs</h3>
 <p><em>enable, feat, value</em></p>
 <p>Create an ‚Äì{enable-<feat>=<value>,disable-<feat>} string that can be passed to standard GNU Autoconf scripts.</p>
@@ -2693,10 +3316,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.enableFeatureAs usage example:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeatureAs</span> true <span class="st">&quot;shared&quot;</span> <span class="st">&quot;foo&quot;</span></span>
-<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--enable-shared=foo&quot;</span></span>
-<span id="cb162-3"><a href="#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeatureAs</span> false <span class="st">&quot;shared&quot;</span> <span class="er">(</span><span class="ex">throw</span> <span class="st">&quot;ignored&quot;</span><span class="kw">)</span></span>
-<span id="cb162-4"><a href="#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--disable-shared&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeatureAs</span> true <span class="st">&quot;shared&quot;</span> <span class="st">&quot;foo&quot;</span></span>
+<span id="cb167-2"><a href="#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--enable-shared=foo&quot;</span></span>
+<span id="cb167-3"><a href="#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="ex">enableFeatureAs</span> false <span class="st">&quot;shared&quot;</span> <span class="er">(</span><span class="ex">throw</span> <span class="st">&quot;ignored&quot;</span><span class="kw">)</span></span>
+<span id="cb167-4"><a href="#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--disable-shared&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.withfeature">lib.strings.withFeature</h3>
 <p><em>with</em>, feat_</p>
 <p>Create an ‚Äì{with,without}-<feat> string that can be passed to standard GNU Autoconf scripts.</p>
@@ -2707,10 +3330,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.withFeature usage example:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeature</span> true <span class="st">&quot;shared&quot;</span></span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--with-shared&quot;</span></span>
-<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeature</span> false <span class="st">&quot;shared&quot;</span></span>
-<span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--without-shared&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeature</span> true <span class="st">&quot;shared&quot;</span></span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--with-shared&quot;</span></span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeature</span> false <span class="st">&quot;shared&quot;</span></span>
+<span id="cb168-4"><a href="#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--without-shared&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.withfeatureas">lib.strings.withFeatureAs</h3>
 <p><em>with</em>, feat, value_</p>
 <p>Create an ‚Äì{with-<feat>=<value>,without-<feat>} string that can be passed to standard GNU Autoconf scripts.</p>
@@ -2723,10 +3346,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.withFeatureAs usage example:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeatureAs</span> true <span class="st">&quot;shared&quot;</span> <span class="st">&quot;foo&quot;</span></span>
-<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--with-shared=foo&quot;</span></span>
-<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeatureAs</span> false <span class="st">&quot;shared&quot;</span> <span class="er">(</span><span class="ex">throw</span> <span class="st">&quot;ignored&quot;</span><span class="kw">)</span></span>
-<span id="cb164-4"><a href="#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--without-shared&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeatureAs</span> true <span class="st">&quot;shared&quot;</span> <span class="st">&quot;foo&quot;</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--with-shared=foo&quot;</span></span>
+<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="ex">withFeatureAs</span> false <span class="st">&quot;shared&quot;</span> <span class="er">(</span><span class="ex">throw</span> <span class="st">&quot;ignored&quot;</span><span class="kw">)</span></span>
+<span id="cb169-4"><a href="#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;--without-shared&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.fixedwidthstring">lib.strings.fixedWidthString</h3>
 <p><em>width, filler, str</em></p>
 <p><code>fixedWidthString :: int -&gt; string -&gt; string -&gt; string</code></p>
@@ -2740,8 +3363,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.fixedWidthString usage example:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fixedWidthString</span> 5 <span class="st">&quot;0&quot;</span> <span class="er">(</span><span class="ex">toString</span> 15<span class="kw">)</span></span>
-<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;00015&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fixedWidthString</span> 5 <span class="st">&quot;0&quot;</span> <span class="er">(</span><span class="ex">toString</span> 15<span class="kw">)</span></span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;00015&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.fixedwidthnumber">lib.strings.fixedWidthNumber</h3>
 <p><em>width, n</em></p>
 <p>Format a number adding leading zeroes up to fixed width.</p>
@@ -2752,8 +3375,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.fixedWidthNumber usage example:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fixedWidthNumber</span> 5 15</span>
-<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;00015&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fixedWidthNumber</span> 5 15</span>
+<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;00015&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.floattostring">lib.strings.floatToString</h3>
 <p><em>float</em></p>
 <p>Convert a float to a string, but emit a warning when precision is lost during the conversion</p>
@@ -2762,11 +3385,11 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.floatToString usage example:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="ex">floatToString</span> 0.000001</span>
-<span id="cb167-2"><a href="#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;0.000001&quot;</span></span>
-<span id="cb167-3"><a href="#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="ex">floatToString</span> 0.0000001</span>
-<span id="cb167-4"><a href="#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> trace: warning: Imprecise conversion from float to string 0.000000</span>
-<span id="cb167-5"><a href="#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;0.000000&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="ex">floatToString</span> 0.000001</span>
+<span id="cb172-2"><a href="#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;0.000001&quot;</span></span>
+<span id="cb172-3"><a href="#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="ex">floatToString</span> 0.0000001</span>
+<span id="cb172-4"><a href="#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> trace: warning: Imprecise conversion from float to string 0.000000</span>
+<span id="cb172-5"><a href="#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;0.000000&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.iscoercibletostring">lib.strings.isCoercibleToString</h3>
 <p><em>x</em></p>
 <p>Check whether a value can be coerced to a string</p>
@@ -2782,14 +3405,14 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.isStorePath usage example:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> <span class="st">&quot;/nix/store/d945ibfx9x185xf04b890y4f9g3cbb63-python-2.7.11/bin/python&quot;</span></span>
-<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span>
-<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> <span class="st">&quot;/nix/store/d945ibfx9x185xf04b890y4f9g3cbb63-python-2.7.11&quot;</span></span>
-<span id="cb168-4"><a href="#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb168-5"><a href="#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> pkgs.python</span>
-<span id="cb168-6"><a href="#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
-<span id="cb168-7"><a href="#cb168-7" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> [] <span class="kw">||</span> <span class="ex">isStorePath</span> 42 <span class="kw">||</span> <span class="ex">isStorePath</span> {} <span class="kw">||</span> <span class="ex">‚Ä¶</span></span>
-<span id="cb168-8"><a href="#cb168-8" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> <span class="st">&quot;/nix/store/d945ibfx9x185xf04b890y4f9g3cbb63-python-2.7.11/bin/python&quot;</span></span>
+<span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span>
+<span id="cb173-3"><a href="#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> <span class="st">&quot;/nix/store/d945ibfx9x185xf04b890y4f9g3cbb63-python-2.7.11&quot;</span></span>
+<span id="cb173-4"><a href="#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb173-5"><a href="#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> pkgs.python</span>
+<span id="cb173-6"><a href="#cb173-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> true</span>
+<span id="cb173-7"><a href="#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="ex">isStorePath</span> [] <span class="kw">||</span> <span class="ex">isStorePath</span> 42 <span class="kw">||</span> <span class="ex">isStorePath</span> {} <span class="kw">||</span> <span class="ex">‚Ä¶</span></span>
+<span id="cb173-8"><a href="#cb173-8" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> false</span></code></pre></div>
 <h3 id="lib.strings.toint">lib.strings.toInt</h3>
 <p><em>str</em></p>
 <p><code>string -&gt; int</code></p>
@@ -2799,23 +3422,23 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.toInt usage example:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="ex">toInt</span> <span class="st">&quot;1337&quot;</span></span>
-<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 1337</span>
-<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="ex">toInt</span> <span class="st">&quot;-4&quot;</span></span>
-<span id="cb169-4"><a href="#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> -4</span>
-<span id="cb169-5"><a href="#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="ex">toInt</span> <span class="st">&quot;3.14&quot;</span></span>
-<span id="cb169-6"><a href="#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> error: floating point JSON numbers are not supported</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="ex">toInt</span> <span class="st">&quot;1337&quot;</span></span>
+<span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 1337</span>
+<span id="cb174-3"><a href="#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="ex">toInt</span> <span class="st">&quot;-4&quot;</span></span>
+<span id="cb174-4"><a href="#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> -4</span>
+<span id="cb174-5"><a href="#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="ex">toInt</span> <span class="st">&quot;3.14&quot;</span></span>
+<span id="cb174-6"><a href="#cb174-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> error: floating point JSON numbers are not supported</span></code></pre></div>
 <h3 id="lib.strings.readpathsfromfile">lib.strings.readPathsFromFile</h3>
 <p>__</p>
 <p>Read a list of paths from <code>file</code>, relative to the <code>rootPath</code>. Lines beginning with <code>#</code> are treated as comments and ignored. Whitespace is significant.</p>
 <p>lib.strings.readPathsFromFile usage example:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="ex">readPathsFromFile</span> /prefix</span>
-<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./pkgs/development/libraries/qt-5/5.4/qtbase/series</span></span>
-<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;/prefix/dlopen-resolv.patch&quot;</span> <span class="st">&quot;/prefix/tzdir.patch&quot;</span></span>
-<span id="cb170-4"><a href="#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/dlopen-libXcursor.patch&quot;</span> <span class="st">&quot;/prefix/dlopen-openssl.patch&quot;</span></span>
-<span id="cb170-5"><a href="#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/dlopen-dbus.patch&quot;</span> <span class="st">&quot;/prefix/xdg-config-dirs.patch&quot;</span></span>
-<span id="cb170-6"><a href="#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/nix-profiles-library-paths.patch&quot;</span></span>
-<span id="cb170-7"><a href="#cb170-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/compose-search-path.patch&quot;</span> ]</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="ex">readPathsFromFile</span> /prefix</span>
+<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./pkgs/development/libraries/qt-5/5.4/qtbase/series</span></span>
+<span id="cb175-3"><a href="#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ <span class="st">&quot;/prefix/dlopen-resolv.patch&quot;</span> <span class="st">&quot;/prefix/tzdir.patch&quot;</span></span>
+<span id="cb175-4"><a href="#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/dlopen-libXcursor.patch&quot;</span> <span class="st">&quot;/prefix/dlopen-openssl.patch&quot;</span></span>
+<span id="cb175-5"><a href="#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/dlopen-dbus.patch&quot;</span> <span class="st">&quot;/prefix/xdg-config-dirs.patch&quot;</span></span>
+<span id="cb175-6"><a href="#cb175-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/nix-profiles-library-paths.patch&quot;</span></span>
+<span id="cb175-7"><a href="#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;/prefix/compose-search-path.patch&quot;</span> ]</span></code></pre></div>
 <h3 id="lib.strings.filecontents">lib.strings.fileContents</h3>
 <p><em>file</em></p>
 <p><code>fileContents :: path -&gt; string</code></p>
@@ -2825,10 +3448,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.fileContents usage example:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">&quot;1.0&quot;</span> <span class="op">&gt;</span> ./version</span>
-<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-3"><a href="#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fileContents</span> ./version</span>
-<span id="cb171-4"><a href="#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;1.0&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">&quot;1.0&quot;</span> <span class="op">&gt;</span> ./version</span>
+<span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fileContents</span> ./version</span>
+<span id="cb176-4"><a href="#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;1.0&quot;</span></span></code></pre></div>
 <h3 id="lib.strings.sanitizederivationname">lib.strings.sanitizeDerivationName</h3>
 <p><em>string</em></p>
 <p><code>sanitizeDerivationName :: String -&gt; String</code></p>
@@ -2838,12 +3461,12 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.strings.sanitizeDerivationName usage example:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sanitizeDerivationName</span> <span class="st">&quot;../hello.bar # foo&quot;</span></span>
-<span id="cb172-2"><a href="#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;-hello.bar-foo&quot;</span></span>
-<span id="cb172-3"><a href="#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sanitizeDerivationName</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb172-4"><a href="#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;unknown&quot;</span></span>
-<span id="cb172-5"><a href="#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="ex">sanitizeDerivationName</span> pkgs.hello</span>
-<span id="cb172-6"><a href="#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;-nix-store-2g75chlbpxlrqn15zlby2dfh8hr9qwbk-hello-2.10&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sanitizeDerivationName</span> <span class="st">&quot;../hello.bar # foo&quot;</span></span>
+<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;-hello.bar-foo&quot;</span></span>
+<span id="cb177-3"><a href="#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sanitizeDerivationName</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb177-4"><a href="#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;unknown&quot;</span></span>
+<span id="cb177-5"><a href="#cb177-5" aria-hidden="true" tabindex="-1"></a><span class="ex">sanitizeDerivationName</span> pkgs.hello</span>
+<span id="cb177-6"><a href="#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;-nix-store-2g75chlbpxlrqn15zlby2dfh8hr9qwbk-hello-2.10&quot;</span></span></code></pre></div>
 <h2 id="miscellaneous-functions">Miscellaneous functions</h2>
 <h3 id="lib.trivial.id">lib.trivial.id</h3>
 <p><em>x</em></p>
@@ -2864,8 +3487,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Value to ignore</p></li>
 </ul>
 <p>lib.trivial.const usage example:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="bu">let</span> <span class="va">f</span> <span class="op">=</span> <span class="va">const</span> <span class="dv">5</span><span class="kw">;</span> <span class="er">in</span> <span class="ex">f</span> 10</span>
-<span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 5</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="bu">let</span> <span class="va">f</span> <span class="op">=</span> <span class="va">const</span> <span class="dv">5</span><span class="kw">;</span> <span class="er">in</span> <span class="ex">f</span> 10</span>
+<span id="cb178-2"><a href="#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 5</span></code></pre></div>
 <h3 id="lib.trivial.pipe">lib.trivial.pipe</h3>
 <p><em>val, functions</em></p>
 <p><code>pipe :: a -&gt; [&lt;functions&gt;] -&gt; &lt;return type of last function&gt;</code></p>
@@ -2877,30 +3500,30 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.trivial.pipe usage example:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pipe</span> 2 [</span>
-<span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">x:</span> x + 2<span class="kw">)</span>  <span class="co"># 2 + 2 = 4</span></span>
-<span id="cb174-3"><a href="#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">x:</span> x <span class="pp">*</span> 2<span class="kw">)</span>  <span class="co"># 4 * 2 = 8</span></span>
-<span id="cb174-4"><a href="#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="ex">]</span></span>
-<span id="cb174-5"><a href="#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 8</span>
-<span id="cb174-6"><a href="#cb174-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-7"><a href="#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ideal to do text transformations</span></span>
-<span id="cb174-8"><a href="#cb174-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pipe</span> [ <span class="st">&quot;a/b&quot;</span> <span class="st">&quot;a/c&quot;</span> ] [</span>
-<span id="cb174-9"><a href="#cb174-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-10"><a href="#cb174-10" aria-hidden="true" tabindex="-1"></a><span class="co"># create the cp command</span></span>
-<span id="cb174-11"><a href="#cb174-11" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">map</span> <span class="er">(</span><span class="ex">file:</span> <span class="st">&#39;&#39;</span>cp <span class="st">&quot;</span><span class="va">${src}</span><span class="st">/</span><span class="va">${file}</span><span class="st">&quot;</span> <span class="va">$out</span><span class="dt">\n</span><span class="st">&#39;&#39;</span><span class="kw">))</span></span>
-<span id="cb174-12"><a href="#cb174-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-13"><a href="#cb174-13" aria-hidden="true" tabindex="-1"></a><span class="co"># concatenate all commands into one string</span></span>
-<span id="cb174-14"><a href="#cb174-14" aria-hidden="true" tabindex="-1"></a><span class="ex">lib.concatStrings</span></span>
-<span id="cb174-15"><a href="#cb174-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-16"><a href="#cb174-16" aria-hidden="true" tabindex="-1"></a><span class="co"># make that string into a nix derivation</span></span>
-<span id="cb174-17"><a href="#cb174-17" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">pkgs.runCommand</span> <span class="st">&quot;copy-to-out&quot;</span> {}<span class="kw">)</span></span>
-<span id="cb174-18"><a href="#cb174-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-19"><a href="#cb174-19" aria-hidden="true" tabindex="-1"></a><span class="ex">]</span></span>
-<span id="cb174-20"><a href="#cb174-20" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="op">&lt;</span>drv which copies all files to <span class="va">$out</span><span class="op">&gt;</span></span>
-<span id="cb174-21"><a href="#cb174-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-22"><a href="#cb174-22" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> output type of each function has to be the input type</span>
-<span id="cb174-23"><a href="#cb174-23" aria-hidden="true" tabindex="-1"></a><span class="ex">of</span> the next function, and the last function returns the</span>
-<span id="cb174-24"><a href="#cb174-24" aria-hidden="true" tabindex="-1"></a><span class="ex">final</span> value.</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pipe</span> 2 [</span>
+<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">x:</span> x + 2<span class="kw">)</span>  <span class="co"># 2 + 2 = 4</span></span>
+<span id="cb179-3"><a href="#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">x:</span> x <span class="pp">*</span> 2<span class="kw">)</span>  <span class="co"># 4 * 2 = 8</span></span>
+<span id="cb179-4"><a href="#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="ex">]</span></span>
+<span id="cb179-5"><a href="#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 8</span>
+<span id="cb179-6"><a href="#cb179-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-7"><a href="#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ideal to do text transformations</span></span>
+<span id="cb179-8"><a href="#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pipe</span> [ <span class="st">&quot;a/b&quot;</span> <span class="st">&quot;a/c&quot;</span> ] [</span>
+<span id="cb179-9"><a href="#cb179-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-10"><a href="#cb179-10" aria-hidden="true" tabindex="-1"></a><span class="co"># create the cp command</span></span>
+<span id="cb179-11"><a href="#cb179-11" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">map</span> <span class="er">(</span><span class="ex">file:</span> <span class="st">&#39;&#39;</span>cp <span class="st">&quot;</span><span class="va">${src}</span><span class="st">/</span><span class="va">${file}</span><span class="st">&quot;</span> <span class="va">$out</span><span class="dt">\n</span><span class="st">&#39;&#39;</span><span class="kw">))</span></span>
+<span id="cb179-12"><a href="#cb179-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-13"><a href="#cb179-13" aria-hidden="true" tabindex="-1"></a><span class="co"># concatenate all commands into one string</span></span>
+<span id="cb179-14"><a href="#cb179-14" aria-hidden="true" tabindex="-1"></a><span class="ex">lib.concatStrings</span></span>
+<span id="cb179-15"><a href="#cb179-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-16"><a href="#cb179-16" aria-hidden="true" tabindex="-1"></a><span class="co"># make that string into a nix derivation</span></span>
+<span id="cb179-17"><a href="#cb179-17" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">pkgs.runCommand</span> <span class="st">&quot;copy-to-out&quot;</span> {}<span class="kw">)</span></span>
+<span id="cb179-18"><a href="#cb179-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-19"><a href="#cb179-19" aria-hidden="true" tabindex="-1"></a><span class="ex">]</span></span>
+<span id="cb179-20"><a href="#cb179-20" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="op">&lt;</span>drv which copies all files to <span class="va">$out</span><span class="op">&gt;</span></span>
+<span id="cb179-21"><a href="#cb179-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-22"><a href="#cb179-22" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> output type of each function has to be the input type</span>
+<span id="cb179-23"><a href="#cb179-23" aria-hidden="true" tabindex="-1"></a><span class="ex">of</span> the next function, and the last function returns the</span>
+<span id="cb179-24"><a href="#cb179-24" aria-hidden="true" tabindex="-1"></a><span class="ex">final</span> value.</span></code></pre></div>
 <h3 id="lib.trivial.concat">lib.trivial.concat</h3>
 <p><em>x, y</em></p>
 <p>note please don‚Äôt add a function like <code>compose = flip pipe</code>. This would confuse users, because the order of the functions in the list is not clear. With pipe, it‚Äôs obvious that it goes first-to-last. With <code>compose</code>, not so much.</p>
@@ -2958,8 +3581,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Right attribute set (higher precedence for equal keys)</p></li>
 </ul>
 <p>lib.trivial.mergeAttrs usage example:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mergeAttrs</span> { a = 1<span class="kw">;</span> <span class="ex">b</span> = 2<span class="kw">;</span> <span class="er">}</span> <span class="kw">{</span> <span class="ex">b</span> = 3<span class="kw">;</span> <span class="ex">c</span> = 4<span class="kw">;</span> <span class="kw">}</span></span>
-<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> { a = 1<span class="kw">;</span> <span class="ex">b</span> = 3<span class="kw">;</span> <span class="ex">c</span> = 4<span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mergeAttrs</span> { a = 1<span class="kw">;</span> <span class="ex">b</span> = 2<span class="kw">;</span> <span class="er">}</span> <span class="kw">{</span> <span class="ex">b</span> = 3<span class="kw">;</span> <span class="ex">c</span> = 4<span class="kw">;</span> <span class="kw">}</span></span>
+<span id="cb180-2"><a href="#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> { a = 1<span class="kw">;</span> <span class="ex">b</span> = 3<span class="kw">;</span> <span class="ex">c</span> = 4<span class="kw">;</span> <span class="er">}</span></span></code></pre></div>
 <h3 id="lib.trivial.flip">lib.trivial.flip</h3>
 <p><em>f, a, b</em></p>
 <p><code>flip :: (a -&gt; b -&gt; c) -&gt; (b -&gt; a -&gt; c)</code></p>
@@ -2973,8 +3596,8 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.trivial.flip usage example:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="ex">flip</span> concat [1] [2]</span>
-<span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ 2 1 ]</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="ex">flip</span> concat [1] [2]</span>
+<span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [ 2 1 ]</span></code></pre></div>
 <h3 id="lib.trivial.mapnullable">lib.trivial.mapNullable</h3>
 <p><em>f, a</em></p>
 <p>Apply function if the supplied argument is non-null.</p>
@@ -2985,10 +3608,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Argument to check for null before passing it to <code>f</code></p></li>
 </ul>
 <p>lib.trivial.mapNullable usage example:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mapNullable</span> <span class="er">(</span><span class="ex">x:</span> x+1<span class="kw">)</span> <span class="ex">null</span></span>
-<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> null</span>
-<span id="cb177-3"><a href="#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mapNullable</span> <span class="er">(</span><span class="ex">x:</span> x+1<span class="kw">)</span> <span class="ex">22</span></span>
-<span id="cb177-4"><a href="#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 23</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mapNullable</span> <span class="er">(</span><span class="ex">x:</span> x+1<span class="kw">)</span> <span class="ex">null</span></span>
+<span id="cb182-2"><a href="#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> null</span>
+<span id="cb182-3"><a href="#cb182-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mapNullable</span> <span class="er">(</span><span class="ex">x:</span> x+1<span class="kw">)</span> <span class="ex">22</span></span>
+<span id="cb182-4"><a href="#cb182-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 23</span></code></pre></div>
 <h3 id="lib.trivial.version">lib.trivial.version</h3>
 <p>__</p>
 <p>Returns the current full nixpkgs version number.</p>
@@ -3041,10 +3664,10 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Function argument</p></li>
 </ul>
 <p>lib.trivial.mod usage example:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mod</span> 11 10</span>
-<span id="cb178-2"><a href="#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 1</span>
-<span id="cb178-3"><a href="#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mod</span> 1 10</span>
-<span id="cb178-4"><a href="#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 1</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mod</span> 11 10</span>
+<span id="cb183-2"><a href="#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 1</span>
+<span id="cb183-3"><a href="#cb183-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mod</span> 1 10</span>
+<span id="cb183-4"><a href="#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> 1</span></code></pre></div>
 <h3 id="lib.trivial.compare">lib.trivial.compare</h3>
 <p><em>a, b</em></p>
 <p>C-style comparisons</p>
@@ -3071,15 +3694,15 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Second value to compare</p></li>
 </ul>
 <p>lib.trivial.splitByAndCompare usage example:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="bu">let</span> <span class="va">cmp</span> <span class="op">=</span> <span class="va">splitByAndCompare</span> <span class="er">(</span><span class="ex">hasPrefix</span> <span class="st">&quot;foo&quot;</span><span class="kw">)</span> <span class="ex">compare</span> compare<span class="kw">;</span> <span class="er">in</span></span>
-<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-3"><a href="#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;a&quot;</span> <span class="st">&quot;z&quot;</span> =<span class="op">&gt;</span> -1</span>
-<span id="cb179-4"><a href="#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;fooa&quot;</span> <span class="st">&quot;fooz&quot;</span> =<span class="op">&gt;</span> -1</span>
-<span id="cb179-5"><a href="#cb179-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-6"><a href="#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;f&quot;</span> <span class="st">&quot;a&quot;</span> =<span class="op">&gt;</span> 1</span>
-<span id="cb179-7"><a href="#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;fooa&quot;</span> <span class="st">&quot;a&quot;</span> =<span class="op">&gt;</span> -1</span>
-<span id="cb179-8"><a href="#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="co"># while</span></span>
-<span id="cb179-9"><a href="#cb179-9" aria-hidden="true" tabindex="-1"></a><span class="ex">compare</span> <span class="st">&quot;fooa&quot;</span> <span class="st">&quot;a&quot;</span> =<span class="op">&gt;</span> 1</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb184-1"><a href="#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="bu">let</span> <span class="va">cmp</span> <span class="op">=</span> <span class="va">splitByAndCompare</span> <span class="er">(</span><span class="ex">hasPrefix</span> <span class="st">&quot;foo&quot;</span><span class="kw">)</span> <span class="ex">compare</span> compare<span class="kw">;</span> <span class="er">in</span></span>
+<span id="cb184-2"><a href="#cb184-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-3"><a href="#cb184-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;a&quot;</span> <span class="st">&quot;z&quot;</span> =<span class="op">&gt;</span> -1</span>
+<span id="cb184-4"><a href="#cb184-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;fooa&quot;</span> <span class="st">&quot;fooz&quot;</span> =<span class="op">&gt;</span> -1</span>
+<span id="cb184-5"><a href="#cb184-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-6"><a href="#cb184-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;f&quot;</span> <span class="st">&quot;a&quot;</span> =<span class="op">&gt;</span> 1</span>
+<span id="cb184-7"><a href="#cb184-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> <span class="st">&quot;fooa&quot;</span> <span class="st">&quot;a&quot;</span> =<span class="op">&gt;</span> -1</span>
+<span id="cb184-8"><a href="#cb184-8" aria-hidden="true" tabindex="-1"></a><span class="co"># while</span></span>
+<span id="cb184-9"><a href="#cb184-9" aria-hidden="true" tabindex="-1"></a><span class="ex">compare</span> <span class="st">&quot;fooa&quot;</span> <span class="st">&quot;a&quot;</span> =<span class="op">&gt;</span> 1</span></code></pre></div>
 <h3 id="lib.trivial.importjson">lib.trivial.importJSON</h3>
 <p><em>path</em></p>
 <p>Reads a JSON file.</p>
@@ -3092,6 +3715,20 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <p>Reads a TOML file.</p>
 <ul>
 <li><p><code>path</code></p>
+<p>Function argument</p></li>
+</ul>
+<h3 id="lib.trivial.warn">lib.trivial.warn</h3>
+<p>__</p>
+<p><code>string -&gt; a -&gt; a</code></p>
+<p>Print a warning before returning the second argument. This function behaves like <code>builtins.trace</code>, but requires a string message and formats it as a warning, including the <code>warning:</code> prefix.</p>
+<h3 id="lib.trivial.warnif">lib.trivial.warnIf</h3>
+<p><em>cond, msg</em></p>
+<p><code>bool -&gt; string -&gt; a -&gt; a</code></p>
+<p>Like warn, but only warn when the first argument is <code>true</code>.</p>
+<ul>
+<li><p><code>cond</code></p>
+<p>Function argument</p></li>
+<li><p><code>msg</code></p>
 <p>Function argument</p></li>
 </ul>
 <h3 id="lib.trivial.setfunctionargs">lib.trivial.setFunctionArgs</h3>
@@ -3133,6 +3770,53 @@ Whether to fetch all refs of the repository. With this argument being true, it‚Ä
 <li><p><code>i</code></p>
 <p>Function argument</p></li>
 </ul>
+<h2 id="versions-functions">Versions functions</h2>
+<h3 id="lib.versions.splitversion">lib.versions.splitVersion</h3>
+<p>__</p>
+<p>Break a version string into its component parts.</p>
+<p>lib.versions.splitVersion usage example:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="ex">splitVersion</span> <span class="st">&quot;1.2.3&quot;</span></span>
+<span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> [<span class="st">&quot;1&quot;</span> <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span>]</span></code></pre></div>
+<h3 id="lib.versions.major">lib.versions.major</h3>
+<p><em>v</em></p>
+<p>Get the major version string from a string.</p>
+<ul>
+<li><p><code>v</code></p>
+<p>Function argument</p></li>
+</ul>
+<p>lib.versions.major usage example:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="ex">major</span> <span class="st">&quot;1.2.3&quot;</span></span>
+<span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;1&quot;</span></span></code></pre></div>
+<h3 id="lib.versions.minor">lib.versions.minor</h3>
+<p><em>v</em></p>
+<p>Get the minor version string from a string.</p>
+<ul>
+<li><p><code>v</code></p>
+<p>Function argument</p></li>
+</ul>
+<p>lib.versions.minor usage example:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="ex">minor</span> <span class="st">&quot;1.2.3&quot;</span></span>
+<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;2&quot;</span></span></code></pre></div>
+<h3 id="lib.versions.patch">lib.versions.patch</h3>
+<p><em>v</em></p>
+<p>Get the patch version string from a string.</p>
+<ul>
+<li><p><code>v</code></p>
+<p>Function argument</p></li>
+</ul>
+<p>lib.versions.patch usage example:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">patch</span> <span class="st">&quot;1.2.3&quot;</span></span>
+<span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;3&quot;</span></span></code></pre></div>
+<h3 id="lib.versions.majorminor">lib.versions.majorMinor</h3>
+<p><em>v</em></p>
+<p>Get string of the first two parts (major and minor) of a version string.</p>
+<ul>
+<li><p><code>v</code></p>
+<p>Function argument</p></li>
+</ul>
+<p>lib.versions.majorMinor usage example:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode nix"><code class="sourceCode bash"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="ex">majorMinor</span> <span class="st">&quot;1.2.3&quot;</span></span>
+<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=</span><span class="op">&gt;</span> <span class="st">&quot;1.2&quot;</span></span></code></pre></div>
 <p>Theme: <a href="https://github.com/jez/pandoc-markdown-css-theme">jez/pandoc-markdown-css-theme</a></p>
 </main>
 
